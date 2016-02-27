@@ -88,6 +88,26 @@ WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("i
 ##Keyboard Interaction
 ```java
 
+// Configure the Action
+Actions action = new Actions(driver);
+
+// To click on the element
+action.moveToElement(element).click().perform();
+
+
+//Multiple Actions
+Actions action = new Actions(driver);
+action.movetoElement("webelement")
+.click()
+.sendkey("aaa")
+.doubleClick("webelement")
+.contextClick()
+.keyDown(Keys.Down)
+.build()
+.perform()
+
+
+
 ```
 
 ##Mouse Interaction
