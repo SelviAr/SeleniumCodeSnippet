@@ -25,6 +25,68 @@ js.executeScript(js);
 ```
 
 
+## Navigation
+
+```java
+
+driver.navigate().refresh();
+
+//Go back to the last visited page
+driver.navigate().back();
+
+//go forward to the next page
+driver.navigate().forward();
+
+
+```
+
+## Waiting
+
+```java
+WebDriverWait wait = new WebDriverWait(driver, 30);
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("id123")));
+```
+
+##Keyboard Interaction
+```java
+
+```
+
+##Mouse Interaction
+```java
+
+```
+
+##Take A Screenshot On The Page
+```java
+File snapshot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+```
+
+##Execute A JavaScript
+```java
+
+```
+
+Upload A File 
+```java
+
+```
+
+
+##Scroll Up, Down Or Anywhere On A Page
+JavascriptExecutor jsx = (JavascriptExecutor) driver;
+//Vertical scroll - down by 100 pixels
+jsx.executeScript("window.scrollBy(0,100)", "");
+//Vertical scroll - up by 55 pixels (note the number is minus 55)
+jsx.executeScript("window.scrollBy(0,-55)", "");
+//Horizontal scroll - right by 20 pixels
+jsx.executeScript("window.scrollBy(20,0)", "");
+//Horizontal scroll - left by 95 pixels (note the number is minus 95)
+jsx.executeScript("window.scrollBy(-95,0)", "");
+
+
+
+
 
 ```java
 import org.openqa.Selenium.Proxy
