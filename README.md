@@ -55,7 +55,7 @@ driver.manage().timeouts().implicitlyWait(3,TimeUnit.MINUTES);
 driver.findElement(By.xpath("//a[@name='client-drivers']/table/tbody/tr[1]/td[4]/a")).click();
 
 
-Alert Screen
+##Alert Screen
 
 ```java
 
@@ -80,8 +80,32 @@ alert.dismiss();
 ```
 
 
+##IFrames
 
+//By finding all the web elements using iframe tag
+List<WebElement> iframeElements = driver.findElements(By.tagName("iframe"));
+System.out.println("The total number of iframes are " + iframeElements.size());
+		
+//Switch by frame ID
+driver.switchTo().frame("IFRAMEGOOGLEADID");
+		
+//Switch by Index
+driver.switchTo().frame(0);
 
+//Switch by frame name
+driver.switchTo().frame("iframename");
+		
+//Switch to Frame by WebElement
+driver.switchTo().frame(driver.findElement(By.id("IFRAMEGOOGLEADID")));
+
+//Switching back to Main page from Frame
+driver.switchTo().frame(0);
+driver.switchTo().defaultContent();
+
+//Wwitch to the parent frame and then switch to the child frame
+driver.switchTo().frame("ParentFrame").switchTo().frame("ChildFrame");
+
+		
 This is [an example](http://example.com/ "Optional Title") inline link.
 
 
