@@ -4,6 +4,8 @@
 ## SeleniumCheatSheet
 ***
 
+I am **bold**
+
 
 ```java
 WebDriver driver = new FirefoxDriver();           //Firefox Driver
@@ -56,11 +58,32 @@ driver.findElement(By.xpath("//a[@name='client-drivers']/table/tbody/tr[1]/td[4]
 Alert Screen
 
 ```java
+
+**Import org.openqa.selenium.Alert**
+
+WebDriverWait wait = new WebDriverWait(driver, 2);
+wait.until(ExpectedConditions.alertIsPresent());
+
+//Switch to Alert
+Driver.switchTo().alert();
+
+//Object Creation for Alert class
 Alert alert = driver.switchTo().alert();
-alert.accept();
-//or
+alert.getText();
+
+//Accept the Alert
+alert.accept();   
+
+//Reject the Alert
 alert.dismiss();
 
 ```
+
+
+
+
+This is [an example](http://example.com/ "Optional Title") inline link.
+
+
 
 
