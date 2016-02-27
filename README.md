@@ -17,6 +17,16 @@ WebDriver driver = new IPhoneDriver();            //iPhone Driver
 WebDriver driver = new HtmlUnitDriver()           //HTML Unit
 ```
 
+## Chrome Driver
+```java
+System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+WebDriver driver = new ChromeDriver();
+```
+
+
+
+
+
 
 ```java
 JavascriptExecutor js = (JavascriptExecutor) driver;
