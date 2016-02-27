@@ -9,3 +9,53 @@ WebDriver driver = new AndroidDriver()            //Android Driver
 WebDriver driver = new IPhoneDriver();            //iPhone Driver
 WebDriver driver = new HtmlUnitDriver()           //HTML Unit
 ```
+
+
+```java
+JavascriptExecutor js = (JavascriptExecutor) driver;
+String js = "document.getElementsByName('fillname')[0].value='Selvi'";
+js.executeScript(js);
+```
+
+
+
+```java
+import org.openqa.Selenium.Proxy
+
+FirefoxProfile profile = new FirefoxProfile();
+String PROXY = "999.999.999.999:9999";
+Proxy proxy = new Proxy();
+proxy.HttpProxy=PROXY;
+proxy.FtpProxy=PROXY;
+proxy.SslProxy=PROXY;
+profile.SetProxyPreferences(proxy);
+FirefoxDriver driver = new FirefoxDriver(profile);
+```
+
+
+
+
+20. File Download
+
+FirefoxProfile Prof = new FirefoxProfile();
+Prof.setPreference("browser.download.dir", "D:\\java prj");
+Prof.setPreference("browser.download.folderList", 2);
+Prof.setPreference("browser.helperApps.neverAsk.saveToDisk","application/zip");
+  
+WebDriver driver = new FirefoxDriver(Prof);
+driver.get("http://seleniumhq.org/download/");
+driver.manage().timeouts().implicitlyWait(3,TimeUnit.MINUTES);
+driver.findElement(By.xpath("//a[@name='client-drivers']/table/tbody/tr[1]/td[4]/a")).click();
+
+
+Alert Screen
+
+```java
+Alert alert = driver.switchTo().alert();
+alert.accept();
+//or
+alert.dismiss();
+
+```
+
+
