@@ -84,9 +84,73 @@ WebElemnt we1 = driver.findElement(By.partialLinkText(“clic”))
 WebElemnt we1 = driver.findElement(By.Xpath(“clic”))
 ```
 
+## Xpath
+
+```java
+//1.Identifying Xpath using full path of XML
+xpath=//body/div[3]/form/fieldset/input[2]  
+//// Here //body is the main root node, /div[3] describes the 3rd div child node of parent node body, /form describes the child node form of parent node div[3], /fieldset describes the child node fieldset of parent node form, /input[2] describes the 2nd input child node of parent node fieldset.
 
 
+//2.Writting Xpath using last()
+//// Here /input[last()-2] describes the 3rd upper input node(input[2]) from last input node.
+xpath=//body/div[3]/form/fieldset/input[last()-2]  
+//// Here /*[last()-3] describes the 4th upper  node(input[2]) from last node.
+xpath=//body/div[3]/form/fieldset/*[last()-3]   
 
+
+//3.Xpath locator using @ and attribute
+//// Here /input[@type='search'] describes the input node having attribute type='search'.
+xpath=//body/div[3]/form/fieldset/input[@type='search']   
+
+
+//4.Xpath expression using @ and attribute
+// Here /input[@accesskey='F'] describes the input node having attribute @accesskey='F'. Another way of same is as bellow.
+xpath=//body/div[3]/form/fieldset/input[@accesskey='F']   
+
+
+//5. Xpath syntax using @ and attribute
+// Here //input[@accesskey='F'] describes the input node having attribute @accesskey='F'. Try it by using it in above example.
+xpath=//input[@accesskey='F']  
+
+6. Xpath example using @ and attribute
+// Here /input[@type='search'] describes the input node having attribute type='search'. Try it by using it in above example.
+xpath=//input[@type='search']   
+
+7. XML Xpath using /descendant:: keyword
+// Here i have used descendant in between. In this case i have described only starting node div with attribute class='search-container' and final node input with accesskey='F' attribute. So not need to describe in between nodes. Try it by using it in above example.
+xpath=//div[@class='search-container']/descendant::input[@accesskey='F']   
+
+8. Xpath query example using contains keyword
+//Here i have used contains keyword to identify id attribute with text "searchInput". Try it by using it in above example.
+xpath=//input[contains(@id, "searchInput")]   
+
+9. xpath using and with attributes
+//In this example, It will look at two attributes in input node. Try it by using it in above example.
+xpath=//input[contains(@id, "searchInput") and contains(@accesskey,"F")]   
+
+10. XML xpath value value using position()
+//This xpath will select input node which is on number 2 position and it is for input text box as shown in image. Try it by using it in above example.
+xpath=//div[@class='search-container']/descendant::input[position()=2]   
+
+11. Using starts-with keyword
+//  In this example, It will find input node with attribute is 'type' and its value is starting with 's' (here it will get type = 'search').
+xpath=//input[starts-with(@type, "s")]    
+
+12. Using OR (|) condition with xpath
+//input[@id='searchInput']
+xpath=//input[@accesskey='F'] | 
+// In both these example, it will find input text box with accesskey='F' or @id='searchInput'. If any one found then it will locate it. Very useful when elements appears alternatively.
+xpath=//input[@accesskey='F' or @id='searchInput']  
+
+13. Using wildcard * with to finding element xpath
+xpath=//*[@accesskey='F'] 
+
+14. Finding nth child element of parent
+//This xpath is for search text box. Here, /*[3] describes the 3rd child element of body which is div[3]. Same way *[2] describes the 2nd child element of fieldset which is input[2]
+
+xpath=//body/*[3]/form/fieldset/*[2]  
+```
 
 
 
