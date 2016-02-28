@@ -186,6 +186,164 @@ Xpath Examples for drop down
 
 ```java
 
+
+(1) Id:
+//div[@id='panel']
+
+
+
+Class:
+//div[@class='panelClass']
+
+//div[@class='panelClass1 panelClass2']
+
+Any Attributes:
+//div[@name='continue']
+//input[@type='button']
+
+Direct Child:
+//ul/li
+
+
+Child or Subchild:
+//ul//li
+
+nth Child:
+//ul[@id='drinks']/li[5]
+
+
+Parent of an element:
+//li[@class='blue']/..
+
+Next Sibling:
+//li[@class='blue']/../li[2]
+//li[@class='blue']/../li[3]
+
+
+Match by Innertext:
+//a[contains(text(),'Sign in')]
+//a[contains(string(),'Sign in')]
+
+By Attribute
+//a[contains(@id,’signup’)]
+//a[contains(@id,’link-signup’)]
+//a[contains(@id,’link)] 
+
+
+(10) Match by Sub-string:
+
+(i) Match a Sub-string(pattern):
+//div[contains(@id,'pattern')]
+
+(ii) Match a prefix:
+//div[starts-with(@id,"prefixString")]
+
+(iii) Match a suffix:
+//div[ends-with(@id,"suffixString")]
+
+
+
+contains()
+//div[contains(@id,’module’)]
+//*[@id=’regular-expression-syntax’]//h2[contains(text(), ‘7.2.1. Regular Expression Syntax’)]
+
+concat()
+concat(//*[@id=’checking-for-a-pair’]/h3/text(), //*[@id=’simulating-scanf’]/h3/text())
+
+normalize-space()
+//*[@id=’sb_form_q’][normalize-space(@value)=’asd asd’]
+
+starts-with()
+//div[starts-with(@id,’module’)]
+string-length()
+The string-length returns the number of characters in the string
+string-length(//*[@id=’regular-expression-syntax’]/h2/text())
+
+substring()
+substring(//*[@id=’regular-expression-syntax’]/h2/text(), 2, 30)
+
+substring-after()
+//div[substring-after(@id,’finding-‘)]
+//*[starts-with(@id,’finding’) and substring-after(@id,’finding-all-adverbs-‘)]
+
+substring-before()
+//div[substring-before(@id,’objects’)]
+ancestor
+Ancestor lets you select any ancestors [e.g., Parent and Grandparent] of the current node.
+//*[@id=’regular-expression-syntax’]/ancestor::div[5]/div[2]
+//*[@id=’regular-expression-syntax’]/ancestor::*
+
+ancestor-or-self
+Ancestor-or-self lets you select any ancestors [e.g., Parent and Grandparent] of the current node including the current node.
+//*[@id=’regular-expression-syntax’]/ancestor-or-self::div[1]
+//*[@id=’regular-expression-syntax’]/ancestor-or-self::*
+
+attribute
+Attribute returns all the attributes in the current node.
+//*[@class=’sphinxsidebarwrapper’]/attribute::*
+//*[@id=’sidebarbutton’]/attribute::title
+
+child
+Child returns all the children in the current node.
+//*[@class=’sphinxsidebarwrapper’]/child::*
+//*//child::h3
+
+descendant
+Descendant lets you select all descendants [e.g., Children and Grandchildren] of the current node.
+//*[@class=’this-page-menu’]/descendant::*
+//*[@class=’this-page-menu’]/descendant::li[2]
+//*[@class=’documentwrapper’]/descendant::div[position()=3]
+
+descendant-or-self
+Descendant-or-self lets you select all descendants [e.g., Children and Grandchildren] of the current node including the current node.
+//*[@class=’this-page-menu’]/descendant-or-self::*
+//*[@id=’searchbox’]/descendant-or-self::form[@class=’search’]/input[2]
+
+following
+Following returns all in the document after the closing tag of the current node.
+//*[@class=’clearer’]/following::*
+
+following-sibling
+Following-sibling returns all the sibling after the closing tag of the current node.
+//*[@class=’related’]/following-sibling::*
+//*[@class=’related’]/following-sibling::div[3]
+
+//Absolute XPath
+web_element_name=html/body/div[30]/div[2]/div[2]/div/div/div/div[1]/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/em/button
+ 
+
+WebElement userName = driver.findElement(By.cssSelector("html body div div form input"));
+WebElement userName = driver.findElement(By.cssSelector("input"));
+WebElement userName = driver.findElement(By.cssSelector("div > a"));
+WebElement userName = driver.findElement(By.cssSelector("div a"));
+WebElement userName = driver.findElement(By.cssSelector("input#username"));
+
+
+WebElement userName = driver.findElement(By.cssSelector("#username"));
+WebElement userName = driver.findElement(By.cssSelector("input.classname"));
+
+
+WebElement userName = driver.findElement(By.cssSelector(".classname"));
+WebElement previousButton = driver.findElement(By.cssSelector("img[alt='Previous']"));
+List<WebElement> imagesWithAlt = driver.findElements(By.cssSelector("img[alt]"));
+WebElement previousButton = driver.findElement(By.cssSelector("header[id^='page-']"));
+WebElement previousButton = driver.findElement(By.cssSelector("header[id$='page-']"));
+WebElement previousButton = driver.findElement(By.cssSelector("header[id*='page-']"));  
+
+
+
+
+
+WebElement userName = driver.findElement(By.xpath("html/body/div/div/form/input"));
+WebElement userName = driver.findElement(By.xpath("//input"));
+WebElement userName = driver.findElement(By.xpath("//div/a"));
+WebElement userName = driver.findElement(By.xpath("//div//a"));
+WebElement userName = driver.findElement(By.xpath(".//*[text()='Первая ссылка']/.."));
+WebElement userName = driver.findElement(By.xpath("//input[@id='username']"));
+List<WebElement> imagesWithAlt = driver.findElements(By.xpath ("img[@alt]"));
+WebElement userName = driver.findElement(By.xpath("//input[@id='username']/.."));
+
+
 //Css Selector Using ID Selector
 var TxtBoxElement = driver.FindElement(By.CssSelector("input#userid"));
 
@@ -383,11 +541,39 @@ File snapshot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 JavascriptExecutor js = (JavascriptExecutor) driver;
 String js = "document.getElementsByName('fillname')[0].value='Selvi'";
 js.executeScript(js);
+
+
+private static void addJQuery (JavascriptExecutor js) {
+
+    String script = "";
+
+    boolean needInjection = (Boolean)(js.executeScript("return this.$ === undefined;"));
+    if(needInjection) {
+        URL u = Resources.getResource("jquery.js");
+        try {
+            script = Resources.toString(u, Charsets.UTF_8);
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        js.executeScript(script);
+    }
+}
+
+
+
+WebElement element = (WebElement) js.executeScript("return jQuery.find('#hplogo');");
+
+
+
 ```
 
 Upload A File 
 ```java
-
+this.driver.Navigate().GoToUrl(
+        @"https://demos.telerik.com/aspnet-ajax/ajaxpanel/application-scenarios/file-upload/defaultcs.aspx");
+WebElement element = driver.FindElement(By.Id("ctl00_ContentPlaceholder1_RadUpload1file0"));
+String filePath = @"D:\Projects\PatternsInAutomation.Tests\WebDriver.Series.Tests\bin\Debug\WebDriver.xml";
+element.SendKeys(filePath);
 ```
 
 
@@ -402,6 +588,14 @@ jsx.executeScript("window.scrollBy(0,-55)", "");
 jsx.executeScript("window.scrollBy(20,0)", "");
 //Horizontal scroll - left by 95 pixels (note the number is minus 95)
 jsx.executeScript("window.scrollBy(-95,0)", "");
+
+
+//Drag and Drop
+this.driver.Navigate().GoToUrl(@"http://loopj.com/jquery-simple-slider/");
+WebElement element = driver.FindElement(By.XPath("//*[@id='project']/p[1]/div/div[2]"));
+Actions move = new Actions(driver);
+move.DragAndDropToOffset(element, 30, 0).Perform();
+
 ```
 
 
@@ -587,6 +781,261 @@ titleContains: Is that title contain?
 
 //Handle browser based authentication using Selenium Webdriver
 driver.get("http://username:password@selvi.com/");
+
+
+```java
+
+//Switch Between Browser Windows or Tabs
+
+ this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com/compelling-sunday-14022016/");
+    driver.FindElement(By.LinkText("10 Advanced WebDriver Tips and Tricks Part 1")).Click();
+    driver.FindElement(By.LinkText("The Ultimate Guide To Unit Testing in ASP.NET MVC")).Click();
+    ReadOnlyCollection<String> windowHandles = driver.WindowHandles;
+    String firstTab = windowHandles.First();
+    String lastTab = windowHandles.Last();
+    driver.SwitchTo().Window(lastTab);
+    Assert.AreEqual<string>("The Ultimate Guide To Unit Testing in ASP.NET MVC", driver.Title);
+    driver.SwitchTo().Window(firstTab);
+    Assert.AreEqual<string>("Compelling Sunday – 19 Posts on Programming and Quality Assurance", driver.Title);
+
+
+//Navigation History
+this.driver.Navigate().GoToUrl(
+        @"http://www.codeproject.com/Articles/1078541/Advanced-WebDriver-Tips-and-Tricks-Part");
+    this.driver.Navigate().GoToUrl(
+        @"http://www.codeproject.com/Articles/1017816/Speed-up-Selenium-Tests-through-RAM-Facts-and-Myth");
+    driver.Navigate().Back();
+    Assert.AreEqual<string>(
+        "10 Advanced WebDriver Tips and Tricks - Part 1 - CodeProject", 
+        driver.Title);
+    driver.Navigate().Refresh();
+    Assert.AreEqual<string>(
+        "10 Advanced WebDriver Tips and Tricks - Part 1 - CodeProject", 
+        driver.Title);
+    driver.Navigate().Forward();
+    Assert.AreEqual<string>(
+        "Speed up Selenium Tests through RAM Facts and Myths - CodeProject", 
+        driver.Title);
+
+
+//Change User Agent
+
+FirefoxProfileManager profileManager = new FirefoxProfileManager();
+FirefoxProfile profile = new FirefoxProfile();
+profile.SetPreference(
+"general.useragent.override",
+"Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+");
+this.driver = new FirefoxDriver(profile);
+
+
+
+
+//Set HTTP Proxy for Browser
+
+FirefoxProfile firefoxProfile = new FirefoxProfile();
+firefoxProfile.SetPreference("network.proxy.type", 1);
+firefoxProfile.SetPreference("network.proxy.http", "myproxy.com");
+firefoxProfile.SetPreference("network.proxy.http_port", 3239);
+driver = new FirefoxDriver(firefoxProfile);
+
+
+Handle SSL Certificate Error
+
+//Handle SSL Certificate Error FirefoxDriver
+FirefoxProfile firefoxProfile = new FirefoxProfile();
+firefoxProfile.AcceptUntrustedCertificates = true;
+firefoxProfile.AssumeUntrustedCertificateIssuer = false;
+driver = new FirefoxDriver(firefoxProfile);
+
+
+//Handle SSL Certificate Error ChromeDriver
+DesiredCapabilities capability = DesiredCapabilities.Chrome();
+Environment.SetEnvironmentVariable("webdriver.chrome.driver", "C:\\Path\\To\\ChromeDriver.exe");
+capability.SetCapability(CapabilityType.AcceptSslCertificates, true);
+driver = new RemoteWebDriver(capability);
+
+
+//Handle SSL Certificate Error InternetExplorerDriver
+
+DesiredCapabilities capability = DesiredCapabilities.InternetExplorer();
+Environment.SetEnvironmentVariable("webdriver.ie.driver", "C:\\Path\\To\\IEDriver.exe");
+capability.SetCapability(CapabilityType.AcceptSslCertificates, true);
+driver = new RemoteWebDriver(capability);
+
+
+
+//Scroll Focus to Control
+this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com/compelling-sunday-14022016/");
+    IWebElement link = driver.FindElement(By.PartialLinkText("Previous post"));
+    string jsToBeExecuted = string.Format("window.scroll(0, {0});", link.Location.Y);
+    ((IJavaScriptExecutor)driver).ExecuteScript(jsToBeExecuted);
+    link.Click();
+    Assert.AreEqual<string>("10 Advanced WebDriver Tips and Tricks - Part 1", driver.Title);
+
+
+//Focus on a Control
+
+this.driver.Navigate().GoToUrl(
+    @"http://automatetheplanet.com/compelling-sunday-14022016/");
+    IWebElement link = driver.FindElement(By.PartialLinkText("Previous post"));
+
+    //Option 1.
+    link.SendKeys(string.Empty);
+
+    //Option 2.
+    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].focus();", link);
+
+
+
+
+1. Taking a Screenshot
+public void TakeFullScreenshot(IWebDriver driver, String filename)
+{
+    Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+    screenshot.SaveAsFile(filename, ImageFormat.Png);
+}
+
+
+public void TakeScreenshotOfElement(IWebDriver driver, By by, string fileName)
+{
+    // 1. Make screenshot of all screen
+    var screenshotDriver = driver as ITakesScreenshot;
+    Screenshot screenshot = screenshotDriver.GetScreenshot();
+    var bmpScreen = new Bitmap(new MemoryStream(screenshot.AsByteArray));
+
+    // 2. Get screenshot of specific element
+    IWebElement element = driver.FindElement(by);
+    var cropArea = new Rectangle(element.Location, element.Size);
+    var bitmap = bmpScreen.Clone(cropArea, bmpScreen.PixelFormat);
+    bitmap.Save(fileName);
+}
+
+
+[TestMethod]
+public void WebDriverAdvancedUsage_TakingFullScrenenScreenshot()
+{
+    this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
+    this.WaitUntilLoaded();
+    string tempFilePath = Path.GetTempFileName().Replace(".tmp", ".png");
+    this.TakeFullScreenshot(this.driver, tempFilePath);
+}
+
+[TestMethod]
+public void WebDriverAdvancedUsage_TakingElementScreenshot()
+{
+    this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
+    this.WaitUntilLoaded();
+    string tempFilePath = Path.GetTempFileName().Replace(".tmp", ".png");
+    this.TakeScreenshotOfElement(this.driver, 
+    By.XPath("//*[@id='tve_editor']/div[2]/div[2]/div/div"), tempFilePath);
+}
+
+
+
+//Execute JavaScript
+ this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
+    this.WaitUntilLoaded();
+    IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+    string title = (string)js.ExecuteScript("return document.title");
+    Debug.WriteLine(title);
+
+
+
+//Set Page Load Timeout
+this.driver.Manage().Timeouts().SetPageLoadTimeout(new TimeSpan(0, 0, 10));
+
+
+private void WaitUntilLoaded()
+{
+    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+    wait.Until((x) =>
+    {
+        return ((IJavaScriptExecutor)this.driver)
+        .ExecuteScript("return document.readyState").Equals("complete");
+    });
+}
+
+
+
+WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(
+  By.XPath("//*[@id='tve_editor']/div[2]/div[2]/div/div")));
+
+
+
+Execute Tests in a Headless Browser
+
+
+this.driver = new PhantomJSDriver(
+        @"D:\Projects\PatternsInAutomation.Tests\WebDriver.Series.Tests\Drivers");
+    this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
+    this.WaitUntilLoaded();
+    IJavaScriptExecutor js = driver as IJavaScriptExecutor;
+    string title = (string)js.ExecuteScript("return document.title");
+    Debug.WriteLine(title);
+
+
+
+Check If an Element Is Visible
+Assert.IsTrue(driver.FindElement(
+        By.XPath("//*[@id='tve_editor']/div[2]/div[2]/div/div")).Displayed);
+
+
+
+Use Specific Profile
+FirefoxProfileManager profileManager = new FirefoxProfileManager();
+FirefoxProfile profile = profileManager.GetProfile("YourProfileName");
+this.driver = new FirefoxDriver(profile);
+
+
+
+ChromeOptions options = new ChromeOptions();
+// set some options
+DesiredCapabilities dc = DesiredCapabilities.Chrome();
+dc.SetCapability(ChromeOptions.Capability, options);
+IWebDriver driver = new RemoteWebDriver(dc);
+
+
+
+Turn Off JavaScript
+FirefoxProfileManager profileManager = new FirefoxProfileManager();
+FirefoxProfile profile = profileManager.GetProfile("HARDDISKUSER");
+profile.SetPreference("javascript.enabled", false);
+this.driver = new FirefoxDriver(profile);
+
+
+
+Manage Cookies
+
+
+Cookie cookie = new Cookie("key", "value");
+this.driver.Manage().Cookies.AddCookie(cookie);
+
+
+
+Get All Cookies
+var cookies = this.driver.Manage().Cookies.AllCookies;
+foreach (var currentCookie in cookies)
+{
+    Debug.WriteLine(currentCookie.Value);
+}
+
+
+Delete a Cookie by Name
+this.driver.Manage().Cookies.DeleteCookieNamed("CookieName");
+
+Delete All Cookies
+this.driver.Manage().Cookies.DeleteAllCookies();
+
+Get a Cookie by Name
+var myCookie = this.driver.Manage().Cookies.GetCookieNamed("CookieName");
+Debug.WriteLine(myCookie.Value);
+
+
+Maximize Window
+driver.Manage().Window.Maximize();
+
+```
 
 
 		
