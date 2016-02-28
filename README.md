@@ -182,6 +182,144 @@ Xpath Examples for drop down
 ```
 
 
+## CSSSelector
+
+```java
+
+//Css Selector Using ID Selector
+var TxtBoxElement = driver.FindElement(By.CssSelector("input#userid"));
+
+//Css Selector Using Class Selector
+var TxtBoxElement = driver.FindElement(By.CssSelector("input.txtuser"));
+
+WebElement cssele = driver.findElements(By.cssSelector("input.textboxcss.top"));
+
+
+//Css Selector Using Attributes Selector
+var TxtBoxElement = driver.FindElement(By.CssSelector("input[id=userid]"));
+var BtnElement = driver.FindElement(By.CssSelector("button[class=btnclass]"));
+var AnchorElement = driver.FindElement(By.CssSelector("a[title=myLink]"));
+WebElement cssele = driver.findElements(By.cssSelector("input#txtName[name=’taComment’]"));
+
+//Tag, Class and Attribute
+
+WebElement cssele = driver.findElements(By.cssSelector("input.textboxcss [name=’taComment’]"));
+
+//Css Selector Using Pattern Matching
+//1. Starts With (prefix)
+var TxtBoxElement = driver.FindElement(By.CssSelector("input[id^='user']"));
+
+//2. Ends With (suffix)
+var BtnElement = driver.FindElement(By.CssSelector("button[class$='btn']"));
+
+//3. Contains
+var AnchorElement = driver.FindElement(By.CssSelector("a[href*='yahoo'] "));
+
+
+//CSS Selector using Parent (indirect child)
+var ElementA = driver.FindElement(By.CssSelector("div#parentdiv input.txtclass]"));
+var ElementB = driver.FindElement(By.CssSelector("div#parentdiv id=anchor]"));
+
+
+//CSS Selector using Parent (direct child)
+var ElementA = driver.FindElement(By.CssSelector("div#parentdiv > input.txtclass]"));
+var ElementB = driver.FindElement(By.CssSelector("div#parentdiv  > id=anchor]")
+
+
+//nth-chilld()
+WebElement cssele = driver.findElements(By.cssSelector("li:nth-child(n)"));
+
+//Inner text
+WebElement cssele = driver.findElements(By.cssSelector("span:contains(‘Upload you pic‘)"));
+
+
+WebElement ele1 = driver.findElement(By.cssSelector(".primary-btn"));
+WebElement ele2 = driver.findElement(By.cssSelector("btn.primary-btn"));
+WebElement ele3 = driver.findElement(By.cssSelector("btn.primary-btn"));  
+
+WebElement Email = driver.findElement(By.cssSelector("input[id=email]"));
+
+driver.FindElement(By.CssSelector("#rightbar > .menu > li:nth-of-type(3) > h5"));
+
+
+IList<IWebElement> hotBanners = driver.FindElements(By.CssSelector(".ban.hot"));
+IWebElement banUsStates = hotBanners[3];
+
+
+driver.findElement(By.cssSelector(“input[id=’Email’]”)).sendKeys(“abcd”);
+driver.findElement(By.cssSelector(“input[name=’Passwd’]”)).sendKeys(“Rahul”);
+
+//using multiple attributes
+//driver.findElement(By.cssSelector(“input[id=’signIn’][value=’Sign in’]”)).click();
+
+//using class name: 2 special chars. . for class and # for id
+
+//driver.findElement(By.cssSelector(“input.rc-button”)).click();
+
+//using multiple classes
+//driver.findElement(By.cssSelector(“input.rc-button.rc-button-submit”)).click();
+
+//using #
+//driver.findElement(By.cssSelector(“input#signIn”)).click();
+
+//^=start with $=ends with *=contains
+
+/*driver.findElement(By.cssSelector(“input[id^=’Em’]”)).sendKeys(“abcd”);
+
+driver.findElement(By.cssSelector(“input[id$=’wd’]”)).sendKeys(“abcd”);
+
+driver.findElement(By.cssSelector(“input[value*=’n i’]”)).click();*/
+
+driver.findElement(By.cssSelector(“css=a:contains(‘Sign in’)”)).click();
+
+
+1. Selenium CSS locator using Tag and any Attribute
+css=input[type=search] \\\\ This syntax will find "input" tag node which contains "type=search" attribute.
+
+css=input[id=searchInput] \\\\ This syntax will find "input" tag node which contains "id=searchInput" attribute.
+
+css=form input[id=searchInput]  \\\\  This syntax will find form containing "input" tag node which contains "id=searchInput" attribute.
+
+(All three CSS path examples given above will locate Search text box.)
+
+2. Selenium CSS locator using Tag and ID attribute
+css=input#searchInput \\\\ Here, '#' sign is specially used for "id" attribute only. It will find "input" tag node which contains "id=searchInput" attribute. This syntax will locate Search text box.
+
+3. Selenium CSS locator using Tag and class attribute
+css=input.formBtn  \\\\  Here, '.' is specially used for "class" attribute only. It will find "input" tag node which contains "class=formBtn" attribute. This syntax will locate Search button (go).
+
+4.  Selenium CSS locator using tag, class, and any attribute
+css=input.formBtn[name=go]  \\\\ It will find "input" tag node which contains "class=formBtn" class and "name=go" attribute. This syntax will locate Search button (go).
+
+5. Tag and multiple Attribute CSS locator
+css=input[type=search][name=search] \\\\  It will find "input" tag node which contains "type=search" attribute and "name=search" attribute. This syntax will locate Search text box.
+
+6. CSS Locator using Sub-string matches(Start, end and containing text) in selenium
+css=input[id^='search']  \\\\  It will find input node which contains 'id' attribute starting with 'search' text.(Here, ^ describes the starting text).
+
+css=input[id$='chInput']  \\\\  It will find input node which contains 'id' attribute starting with 'chInput' text. (Here, $ describes the ending text).
+
+css=input[id*='archIn']  \\\\  It will find input node which contains 'id' attribute containing 'archIn' text. (Here, * describes the containing text).
+
+(All three CSS path examples given above will locate Search text box on page of software web application.)
+
+7. CSS Element locator syntax using child Selectors
+css=div.search-container>form>fieldset>input[id=searchInput]  \\\\  First it will find div tag with "class = search-container" and then it will follow remaining path to locate child node. This syntax will locate Search text box.
+
+8. CSS Element locator syntax using adjacent selectors
+css=input + input  \\\\  It will locate "input" node where another "input" node is present before it on page.(for search tect box).
+
+css=input + select or css=input + input + select \\\\  It will locate "select" node, where "input" node is present before it on page(for language drop down).
+
+9. CSS Element locator using contains keyword
+css=strong:contains("English")  \\\\ It will looks for the element containing text "English" as a value on the page.
+
+
+
+
+```
+
+
 
 ## Navigation
 
