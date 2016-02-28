@@ -87,6 +87,23 @@ WebElemnt we1 = driver.findElement(By.Xpath(“clic”))
 ## Xpath
 
 ```java
+
+Xpath Locator based on id of element:
+xpath=//input[@id='name']
+
+Xpath Locator based on name of element: 
+xpath=//input[@name='email']
+
+Xpath Locator based on class of element: 
+xpath=//input[@class='button']
+
+Xpath Locator based on value of element: 
+xpath=//input[@value='Submit ']
+
+Xpath Locator based on containing text by element: 
+xpath=//p[contains(text(),'Name')]
+
+
 //1.Identifying Xpath using full path of XML
 xpath=//body/div[3]/form/fieldset/input[2]  
 //// Here //body is the main root node, /div[3] describes the 3rd div child node of parent node body, /form describes the child node form of parent node div[3], /fieldset describes the child node fieldset of parent node form, /input[2] describes the 2nd input child node of parent node fieldset.
@@ -150,6 +167,18 @@ xpath=//*[@accesskey='F']
 //This xpath is for search text box. Here, /*[3] describes the 3rd child element of body which is div[3]. Same way *[2] describes the 2nd child element of fieldset which is input[2]
 
 xpath=//body/*[3]/form/fieldset/*[2]  
+
+
+Xpath Examples for drop down
+1. xpath=//body/div[3]/form/fieldset/select
+2. xpath=//body/div[3]/form/fieldset/select[last()]
+3. xpath=//body/div[3]/form/fieldset/select[@id='searchLanguage']
+4. xpath=//body/div[3]/form/fieldset/select[@name='language']
+5. xpath=//div[@class='search-container']/descendant::select[@name='language']
+6. xpath=//select[contains(@id, "searchLanguage")]
+7. xpath=//div[@class='search-container']/descendant::select[position()=1]
+8. xpath=//body/div[3]/form/fieldset/select[count(*)>1]
+
 ```
 
 
