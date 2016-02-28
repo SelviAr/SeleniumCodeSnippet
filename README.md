@@ -286,6 +286,46 @@ public static boolean closeAllOtherWindows(String openWindowHandle) {
 		return false;
 }
 ```
+
+
+## Window Handle
+
+
+```java
+//Implicitly Wait Command
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+//Explicit Wait Command
+WebDriverWait wait = new WebDriverWait(driver, 10);
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id(>someid>)));
+
+//PageLoadTimeout Command
+driver.manage().timeouts().pageLoadTimeout(100, SECONDS);
+
+//SetScriptTimeout Command
+driver.manage().timeouts().setScriptTimeout(100,SECONDS);
+
+//Sleep Command
+thread.sleep(1000)
+
+```
+
+
+alertIsPresent() : Is Alert Present?
+elementSelectionStateToBe: Is the element selected?
+elementToBeClickable: Is the element clickable?
+elementToBeSelected: Element is selected
+frameToBeAvailableAndSwitchToIt: Is frame available and selected?
+invisibilityOfElementLocated: Is the element invisible?
+presenceOfAllElementsLocatedBy: All elements presence location.
+refreshed: Wait for a page refresh.
+textToBePresentInElement: Is the text present for a particular element?
+textToBePresentInElementValue: Is the element value present for a particular element?
+visibilityOf: Is the element visible?
+titleContains: Is that title contain?
+
+
 		
 This is [an example](http://example.com/ "Optional Title") inline link.
 
