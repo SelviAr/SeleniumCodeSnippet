@@ -1,8 +1,7 @@
-# SeleniumCheatSheet
+# Selenium Code Snippet
 
 
-## SeleniumCheatSheet
-***
+
 
 ## Driver Download
 
@@ -55,7 +54,35 @@ DesiredCapabilities safari = IOSCapabilities.iphone("Safari");
 RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), safari);
 ```
 
+## Find Elements
 
+```java
+//Find element by ID:
+WebElemnt we1 = driver.findElement(By.id("Elementid"))
+
+//Find element by element name:
+WebElemnt we1 = driver.findElement(By.name("ElementName"))
+
+
+//Find element by tagname:, get all the links
+WebElemnt we1 = driver.findElement(By.tagName("a"))
+
+
+//Find element by class name:
+WebElemnt we1 = driver.findElement(By.className("ElementClassName"))
+
+//Find element by CSS Selector:
+WebElemnt we1 = driver.findElement(By.cssSelector("input[value='google']"));
+
+//Find element by element link text
+WebElemnt we1 = driver.findElement(By.linkText(“click here”))
+
+//Find element by partial element link text
+WebElemnt we1 = driver.findElement(By.partialLinkText(“clic”))
+
+//Find element by xpath
+WebElemnt we1 = driver.findElement(By.Xpath(“clic”))
+```
 
 
 
@@ -324,6 +351,11 @@ textToBePresentInElement: Is the text present for a particular element?
 textToBePresentInElementValue: Is the element value present for a particular element?
 visibilityOf: Is the element visible?
 titleContains: Is that title contain?
+
+
+
+//Handle browser based authentication using Selenium Webdriver
+driver.get("http://username:password@selvi.com/");
 
 
 		
