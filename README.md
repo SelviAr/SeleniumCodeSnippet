@@ -1703,6 +1703,7 @@ driver = new ChromeDriver(options);
 
 ## Links		
 * [Automate Telerik Kendo Grid Webdriver](http://automatetheplanet.com/automate-telerik-kendo-grid-webdriver/)
+* [Selenium Documentation](http://docs.seleniumhq.org/docs/)
 
 
 
