@@ -54,6 +54,15 @@ WebDriver driver = new InternetExplorerDriver();
 WebDriver driver = new SafariDriver();            
 ```
 
+## Opera Driver
+```java
+DesiredCapabilities capabilities = new DesiredCapabilities(); 
+capabilities.setCapability("opera.binary", "C://Program Files (x86)//Opera//opera.exe"); 
+capabilities.setCapability("opera.log.level", "CONFIG"); 
+WebDriver driver = new OperaDriver(capabilities); 
+         
+```
+
 ## Android Driver
 ```java
 WebDriver driver = new AndroidDriver()            
@@ -66,7 +75,10 @@ WebDriver driver = new IPhoneDriver();
 
 ## HTMLUnit Driver
 ```java
-WebDriver driver = new HtmlUnitDriver()           
+DesiredCapabilities capabilities = DesiredCapabilities.firefox(); 
+capabilities.setBrowserName("Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0"); 
+capabilities.setVersion("24.0"); 
+driver = new HtmlUnitDriver(capabilities); 
 ```
 
 ## RemoteWebDriver
@@ -74,6 +86,57 @@ WebDriver driver = new HtmlUnitDriver()
 DesiredCapabilities safari = IOSCapabilities.iphone("Safari");
 RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), safari);
 ```
+
+## PhantomJS
+```java
+DesiredCapabilities caps = new DesiredCapabilities(); 
+caps.setCapability("takesScreenshot", true); 
+caps.setJavascriptEnabled(true); // not really needed; JS is enabled by default 
+caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_ PROPERTY, "C:/phantomjs.exe"); 
+WebDriver driver = new PhantomJSDriver(caps); 
+```
+
+## SauceLabs
+```java
+DesiredCapabilities capabilities = new DesiredCapabilities(); 
+capabilities.setBrowserName(browser); 
+capabilities.setCapability("version", browserVersion); 
+capabilities.setCapability("platform", Platform.MAC); 
+capabilities.setCapability("name", method.getName()); 
+// Create the connection to SauceLabs to run the tests 
+this.driver = new RemoteWebDriver( 
+new URL("http://" + username + ":" + key + "@ondemand.saucelabs. com:80/wd/hub"), capabilities); 
+```
+
+## SauceLabs
+```java
+public static final String USERNAME = "yourusername"; 
+public static final String ACCESS_KEY = "youraccesskey"; 
+public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@hub.browserstack.com/wd/hub"; 
+DesiredCapabilities caps = new DesiredCapabilities(); 
+caps.setCapability("browser", "Firefox"); 
+caps.setCapability("browser_version", "23.0"); 
+caps.setCapability("os", "Windows");
+caps.setCapability("os_version", "XP"); 
+caps.setCapability("browserstack.debug", "true"); 
+//This enable Visual Logs 
+driver = new RemoteWebDriver(new URL(URL), caps); 
+
+```
+
+
+## SauceLabs
+```java
+DesiredCapabilitiescapabillities = DesiredCapabilities.firefox(); 
+capabillities.setCapability("version", "24"); 
+capabillities.setCapability("platform", Platform.WINDOWS); 
+capabillities.setCapability("name", "testOnCloud"); 
+capabillities.setCapability("screenshot", true); capabillities.setCapability("screenrecorder", true); 
+driver = new RemoteWebDriver( 
+new URL ("http://ClientKey:ClientSecret@hub.testingbot.com:4444/wd/hub"), 
+capabillities); 
+```
+
 
 ## Simple Testcase
 ```java
@@ -1543,14 +1606,17 @@ public void VerifyFileDownloadFirefox()
         }
     }
 }
+```
 
 
-
-
-
-
-
-
+## Switching user agents 
+```java
+System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe"); 
+ChromeOptions options = new ChromeOptions(); 
+options.addArguments("user-data-dir=C:/Users/user_name/AppData/Local/ Google/Chrome/User Data"); 
+options.addArguments("--user-agent=Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5"); //iPhone 4 
+options.addArguments("--start-maximized"); 
+driver = new ChromeDriver(options); 
 ```
 
 ## License
