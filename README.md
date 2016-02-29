@@ -1252,7 +1252,7 @@ public void VerifyFileDownloadFirefox()
 
 ```
 		
-Automate Telerik Kendo Grid Webdriver (http://automatetheplanet.com/automate-telerik-kendo-grid-webdriver/ "Automate Telerik Kendo Grid Webdriver")
+Automate Telerik Kendo Grid Webdriver (http://automatetheplanet.com/automate-telerik-kendo-grid-webdriver/, "Automate Telerik Kendo Grid Webdriver")
 
 
 
