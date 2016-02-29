@@ -1037,9 +1037,222 @@ driver.Manage().Window.Maximize();
 
 ```
 
+## Select
+```java
+new Select(driver.findElement(By.id("gender"))).selectByVisibleText("Germany");
 
+
+Select dropdown = new Select(driver.findElement(By.id("identifier")));
+dropdown.selectByVisibleText("Programmer ");
+dropdown.selectByIndex(1);
+dropdown.selectByValue("prog");
+
+
+WebElement select = driver.findElement(By.id("gender"));
+List<WebElement> options = select.findElements(By.tagName("option"));
+
+
+
+for (WebElement option : options) {
+
+if("Germany".equals(option.getText().trim()))
+
+ option.click();   
+}
+
+
+
+List<WebElement> list = sel.getOptions();
+ for(int i=0;i<list.size();i++){
+        if(list.get(i).getText().equals(sel.getFirstSelectedOption().getText())){
+            System.out.println("The index of the selected option is: "+i);
+            break;
+            }
+
+
+//checks whether the check box is selected or not. If it is not selected, then it selects.
+if ( !driver.findElement(By.id("idOfTheElement")).isSelected() )
+{
+     driver.findElement(By.id("idOfTheElement")).click();
+}
+
+
+```
+
+
+## Select
+```java
+
+
+
+//Start FirefoxDriver with Plugins
+FirefoxProfile profile = new FirefoxProfile();
+profile.AddExtension(@"C:\extensionsLocation\extension.xpi");
+IWebDriver driver = new FirefoxDriver(profile);
+
+
+
+//Set HTTP Proxy ChromeDriver
+ChromeOptions options = new ChromeOptions();
+var proxy = new Proxy();
+proxy.Kind = ProxyKind.Manual;
+proxy.IsAutoDetect = false;
+proxy.HttpProxy =
+proxy.SslProxy = "127.0.0.1:3239";
+options.Proxy = proxy;
+options.AddArgument("ignore-certificate-errors");
+IWebDriver driver = new ChromeDriver(options);
+
+
+//Set HTTP Proxy with Authentication ChromeDriver
+ChromeOptions options = new ChromeOptions();
+var proxy = new Proxy();
+proxy.Kind = ProxyKind.Manual;
+proxy.IsAutoDetect = false;
+proxy.HttpProxy =
+proxy.SslProxy = "127.0.0.1:3239";
+options.Proxy = proxy;
+options.AddArguments("--proxy-server=http://user:password@127.0.0.1:3239");
+options.AddArgument("ignore-certificate-errors");
+IWebDriver driver = new ChromeDriver(options);
+
+
+Start ChromeDriver with an Unpacked Extension
+ChromeOptions options = new ChromeOptions();
+options.AddArguments("load-extension=/pathTo/extension");
+DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.SetCapability(ChromeOptions.Capability, options);
+DesiredCapabilities dc = DesiredCapabilities.Chrome();
+dc.SetCapability(ChromeOptions.Capability, options);
+IWebDriver driver = new RemoteWebDriver(dc);
+
+
+//Start ChromeDriver with an Packed Extension
+ChromeOptions options = new ChromeOptions();
+options.AddExtension(Path.GetFullPath("local/path/to/extension.crx"));
+DesiredCapabilities capabilities = new DesiredCapabilities();
+capabilities.SetCapability(ChromeOptions.Capability, options);
+DesiredCapabilities dc = DesiredCapabilities.Chrome();
+dc.SetCapability(ChromeOptions.Capability, options);
+IWebDriver driver = new RemoteWebDriver(dc);
+
+
+//Assert a Button Enabled or Disabled
+
+IWebElement button = driver.FindElement(By.XPath("/html/body/button"));
+Assert.IsFalse(button.Enabled);
+
+
+
+//Set and Assert the Value of a Hidden Field
+////<input type="hidden" name="country" value="Bulgaria"/>
+    IWebElement theHiddenElem = driver.FindElement(By.Name("country"));
+    string hiddenFieldValue = theHiddenElem.GetAttribute("value");
+    Assert.AreEqual("Bulgaria", hiddenFieldValue);
+    ((IJavaScriptExecutor)driver).ExecuteScript(
+        "arguments[0].value='Germany';",
+        theHiddenElem);
+    hiddenFieldValue = theHiddenElem.GetAttribute("value");
+    Assert.AreEqual("Germany", hiddenFieldValue);
+
+
+
+//Wait AJAX Call to Complete Using JQuery
+
+public void WaitForAjaxComplete(int maxSeconds)
+{
+    bool isAjaxCallComplete = false;
+    for (int i = 1; i <= maxSeconds; i++)
+    {
+        isAjaxCallComplete = (bool)((IJavaScriptExecutor)driver).
+        ExecuteScript("return window.jQuery != undefined && jQuery.active == 0");
+
+        if (isAjaxCallComplete)
+        {
+            return;
+        }
+        Thread.Sleep(1000);
+    }
+    throw new Exception(string.Format("Timed out after {0} seconds", maxSeconds));
+}
+
+
+
+//Verify File Downloaded ChromeDriver
+[TestMethod]
+public void VerifyFileDownloadChrome()
+{
+    string expectedFilePath = @"c:\temp\Testing_Framework_2015_3_1314_2_Free.exe";
+    try
+    {
+        String downloadFolderPath = @"c:\temp\";
+        var options = new ChromeOptions();
+        options.AddUserProfilePreference("download.default_directory", downloadFolderPath);
+        driver = new ChromeDriver(options);
+
+        driver.Navigate().GoToUrl("https://www.telerik.com/download-trial-file/v2/telerik-testing-framework");
+        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+        wait.Until((x) =>
+        {
+            return File.Exists(expectedFilePath);
+        });
+        FileInfo fileInfo = new FileInfo(expectedFilePath);
+        long fileSize = fileInfo.Length;
+        Assert.AreEqual(4326192, fileSize);
+    }
+    finally
+    {
+        if (File.Exists(expectedFilePath))
+        {
+            File.Delete(expectedFilePath);
+        }
+    }
+}
+
+
+//Verify File Downloaded FirefoxDriver
+public void VerifyFileDownloadFirefox()
+{
+    string expectedFilePath = @"c:\temp\Testing_Framework_2015_3_1314_2_Free.exe";
+    try
+    {
+        String downloadFolderPath = @"c:\temp\";
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.SetPreference("browser.download.folderList", 2);
+        profile.SetPreference("browser.download.dir", downloadFolderPath);
+        profile.SetPreference("browser.download.manager.alertOnEXEOpen", false);
+        profile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/msword, application/binary, application/ris, text/csv, image/png, application/pdf, text/html, text/plain, application/zip, application/x-zip, application/x-zip-compressed, application/download, application/octet-stream");
+        this.driver = new FirefoxDriver(profile);
+
+        driver.Navigate().GoToUrl("https://www.telerik.com/download-trial-file/v2/telerik-testing-framework");
+        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+        wait.Until((x) =>
+        {
+            return File.Exists(expectedFilePath);
+        });
+        FileInfo fileInfo = new FileInfo(expectedFilePath);
+        long fileSize = fileInfo.Length;
+        Assert.AreEqual(4326192, fileSize);
+    }
+    finally
+    {
+        if (File.Exists(expectedFilePath))
+        {
+            File.Delete(expectedFilePath);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+```
 		
-This is [an example](http://example.com/ "Optional Title") inline link.
+Automate Telerik Kendo Grid Webdriver (http://automatetheplanet.com/automate-telerik-kendo-grid-webdriver/ "Automate Telerik Kendo Grid Webdriver")
 
 
 
