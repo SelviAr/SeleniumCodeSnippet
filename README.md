@@ -606,7 +606,86 @@ driver.manage().deleteCookieNamed("lastloggin");
 ```java
 WebDriverWait wait = new WebDriverWait(driver, 30);
 WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("id123")));
+
+//presenceOfElementLocated - Verify presence of element in the DOM.
+WebDriverWait wait = new WebDriverWait(driver, 1000);
+wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("QAmail"))); 
+
+//Using elementToBeClickable
+wait.until(ExpectedConditions.elementToBeClickable(By.linkText("TGmail")));
+
+//c. Using invisibilityOfElementLocated
+wait.until(ExpectedConditions.invisibilityOfElementLocated(By.linkText("tGmail")));
+
+//invisibilityOfElementWithText - Validating the invisibility of element with text for the element provided.
+wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("//div[@id='_eE']"), "tGmail")); 
+
+//textToBePresentInElement - Validating the text to be present in the element defined by locator.
+wait.until(ExpectedConditions.textToBePresentInElement(By.xpath("//div[@id='_eE']"),"Gmail")); 
+
+//visibilityOfElementLocated by locator.
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='_eE']"))); 
+
+//titleContains - Wait until the title is displayed correctly
+wait.until(ExpectedConditions.titleContains("QA Automation QTP"));
+
+// alertIsPresent - waits for alert to appear in the window.
+wait.until(ExpectedConditions.alertIsPresent());
+
+
+driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS); 
+
+
+//How to wait till element visible or appear or present on page 
+WebDriverWait wait = new WebDriverWait(driver, 15); 
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='text3']")));
+
+
+
+//How to apply wait in webdriver till element becomes invisible or hidden 
+WebDriverWait wait = new WebDriverWait(driver, 15); 
+wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//input[@id='text4']"))); 
+
+
+//Selenium WebDriver wait for title with example
+WebDriverWait wait = new WebDriverWait(driver, 15); 
+wait.until(ExpectedConditions.titleContains(": MyTest"));
+
+//how to wait for alert in selenium
+WebDriverWait wait = new WebDriverWait(driver, 15); 
+wait.until(ExpectedConditions.alertIsPresent());
+
+
+//wait for text to be present with example using explicit wait 
+WebDriverWait wait = new WebDriverWait(driver, 15); 
+wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[@id='timeLeft']"), "Time left: 7 seconds")); 
+
+
+//How to wait for element to be clickable in selenium webdriver using explicit wait
+WebDriverWait wait = new WebDriverWait(driver, 15); 
+wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#submitButton"))); 
+
 ```
+
+## Timeouts
+```java
+//implicitlyWait
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.DAYS); 
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.HOURS); 
+driver.manage().timeouts().implicitlyWait(30, TimeUnit. MICROSECONDS); 
+driver.manage().timeouts().implicitlyWait(30, TimeUnit. MILLISECONDS); 
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.MINUTES); 
+driver.manage().timeouts().implicitlyWait(30, TimeUnit. NANOSECONDS); 
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+//pageLoadTimeout
+driver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS); 
+
+//setScriptTimeout
+driver.manage().timeouts().setScriptTimeout(3, TimeUnit.SECONDS); 
+
+```
+
 
 ##Keyboard Interaction
 ```java
