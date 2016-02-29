@@ -1,7 +1,8 @@
 # Selenium Code Snippet
 
-This  repository contains Selenium code snippet I have collected over the perioid from my work. I have created this page as quick reference page for  Selenium automation engineers. 
+This  repository contains Selenium code snippet I have collected over the perioid from my work. I have created this page as quick reference page for  Selenium automation engineers. My thanks to all the bloggers who helped me to become  Selenium automation engineer.
 
+- Selvi
 
 ##Table of Contents
 
