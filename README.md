@@ -75,6 +75,23 @@ DesiredCapabilities safari = IOSCapabilities.iphone("Safari");
 RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), safari);
 ```
 
+## Simple Testcase
+```java
+driver.get("https://www.google.com");
+driver.findElement(By.name("q")).sendKeys("Download selenium chrome driver");
+driver.findElement(By.name("q")).clear();
+driver.findElement(By.name("q")).sendKeys("Download selenium IE driver");
+driver.findElement(By.id("butid")).click();
+driver.findElement(By.id("butid")).submit();
+System.out.println(driver.getTitle());
+System.out.println(driver.getCurrentUrl());
+System.out.println(driver.getPageSource());
+driver.quit();
+
+```
+
+
+
 ## Find Elements
 
 ```java
@@ -476,6 +493,10 @@ css=strong:contains("English")  \\\\ It will looks for the element containing te
 
 ```java
 
+driver.get("http://www.google.com");
+
+driver.navigate().to("http://www.google.com");
+
 driver.navigate().refresh();
 
 //Go back to the last visited page
@@ -484,7 +505,37 @@ driver.navigate().back();
 //go forward to the next page
 driver.navigate().forward();
 
+```
 
+## Navigation
+```java
+
+//getCookies
+driver.get("https://www.google.co.in");
+Set<Cookie> cookies = driver.manage().getCookies();
+for(Cookie ck :cookies) {
+	System.out.println(ck);
+}
+
+//getCookieNamed
+System.out.println(driver.manage().getCookieNamed("lastloggin"));
+
+//addCookie
+Cookie cookie = new Cookie("lastloggin", "10/10/2015");
+driver.manage().addCookie(cookie);
+
+//deleteCookie
+driver.get("https://www.google.co.in");
+Set<Cookie> cookies = driver.manage().getCookies();
+for(Cookie ck :cookies) {
+	driver.manage().deleteCookie(ck);
+}
+
+//deleteAllCookies
+driver.manage().deleteAllCookies();
+
+//deleteCookieNamed
+driver.manage().deleteCookieNamed("lastloggin");
 ```
 
 ## Waiting
@@ -514,6 +565,150 @@ action.movetoElement("webelement")
 .keyDown(Keys.Down)
 .build()
 .perform()
+
+
+
+//build
+Actions action = new Actions(driver);
+action.click(driver.findElement(By.locatorType("path")));
+action.build();
+
+//click
+action.click(); 
+action.click(driver.findElement(By.locatorType("path")));
+
+//perform
+driver.get("http://www.google.com");
+Actions action = new Actions(driver);
+action.click().build().perform();
+or
+action.click(driver.findElement(By.id("gsri_ok0"))).build().perform();
+
+//doubleClick
+action.doubleClick(ele).build().perform();
+
+// contextClick
+driver.get("http://docs.seleniumhq.org"); 
+Actions action = new Actions(driver); 
+WebElement ele = driver.findElement(By.xpath("//div[@ id='mainContent']/p[1]/i")); 
+action.moveToElement(ele).contextClick().build().perform(); 
+
+
+//clickAndHold
+action.clickAndHold().build().perform();
+action.clickAndHold(driver.findElement(By.locatorType("path"))).build().perform();
+
+//moveToElement
+Actions action = new Actions(driver);
+WebElement source = driver.findElement(By.locatorType("path"));
+action.moveToElement(source).build().perform();
+action.moveToElement(source, 234, 345).build().perform();
+
+//moveByOffset
+Actions action = new Actions(driver);
+action.moveByOffset(234, 345).build().perform();
+
+//dragAndDrop
+Actions action = new Actions(driver); 
+WebElement source = driver.findElement(By.locatorType("path")); 
+WebElement target = driver.findElement(By.locatorType("path")); 
+action.dragAndDrop(source, target).build().perform(); 
+
+//dragAndDropBy
+Actions action = new Actions(driver); 
+WebElement source = driver.findElement(By.locatorType("path")); 
+action.dragAndDropBy(source, 456, 234).build().perform(); 
+
+
+//keyDown
+Actions action = new Actions(driver);
+WebElement source = driver.findElement(By.locatorType("path"));
+WebElement target = driver.findElement(By.locatorType("path"));
+action.keyDown(Keys.CONTROL);
+action.click(source);
+action.click(target);
+action.keyUp(Keys.CONTROL);
+action.perform();
+
+
+//keyUp
+Actions action = new Actions(driver);
+action.keyDown(Keys.CONTROL).sendKeys(Keys.END).keyUp(Keys.CONTROL).build().perform();
+
+
+//Drag and Drop
+WebElement source = driver.findElement(By.locatorType("path"));
+WebElement target = driver.findElement(By.locatorType("path"));
+Actions action = new Actions(driver);
+Action dragAndDrop = action.clickAndHold(source)
+.moveToElement(target)
+.release(target Element)
+.build();
+dragAndDrop.perform();
+
+public void dragAndDrop() throws AWTException, InterruptedException {
+	driver.get("http://demo.kaazing.com/forex/");
+	Actions action = new Actions(driver);
+	WebElement sourceElement = driver.findElement(By.	xpath("(//li[@name='dragSource'])[13]"));
+	Action drag = action.clickAndHold(sourceElement).build();
+	drag.perform();
+	WebElement targetElement = driver.findElement(By.	xpath("//section[@id='section1']/div[2]"));
+	Point coordinates = targetElement.getLocation();
+	Robot robot = new Robot(); //Robot for controlling mouse	actions
+	robot.mouseMove(coordinates.getX(), coordinates.getY() + 120);
+	Thread.sleep(2000);
+	robot.mouseMove(coordinates.getX(), coordinates.getY() + 	110);
+	Thread.sleep(5000);
+}
+
+//dragAndDropBy
+Actions action = new Actions(driver);
+WebElement source = driver.findElement(By.locatorType("path"));
+action.dragAndDropBy(source, 456, 234).build().perform();
+
+
+//release
+WebElement source = driver.findElement(By.locatorType("path"));
+WebElement target = driver.findElement(By.locatorType("path"));
+Action dragAndDrop = action.clickAndHold(source)
+.moveToElement(target)
+.release(target)
+.build();
+dragAndDrop.perform();
+
+
+//sendKeys
+Actions action = new Actions(driver);
+WebElement target = driver.findElement(By.locatorType("path"));
+action.sendKeys(Keys.TAB).build().perform();
+action.sendKeys(Keys.CONTROL, Keys.END).build().perform();
+action.sendKeys(target, Keys.TAB).build().perform();
+
+//Zoom In:
+WebElement html = driver.findElement(By.tagName("html")); // WINDOWS
+html.sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD)); // MAC
+html.sendKeys(Keys.chord(Keys.COMMAND, Keys.ADD));
+
+//Zoom Out
+WebElement html = driver.findElement(By.tagName("html")); // WINDOWS
+html.sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT)); // MAC
+html.sendKeys(Keys.chord(Keys.COMMAND, Keys.SUBTRACT));
+
+//Zoom 100%:
+WebElement html = driver.findElement(By.tagName("html")); // WINDOWS
+html.sendKeys(Keys.chord(Keys.CONTROL, "0")); // MAC
+html.sendKeys(Keys.chord(Keys.COMMAND, Keys."0"));
+
+//Enter:
+driver.findElement(By.locatorType("path")).sendKeys(Keys.RETURN);
+driver.findElement(By.locatorType("path")).sendKeys(Keys.ENTER);
+
+//Mouse Hover
+Actions action = new Actions(driver);
+WebElement HoverLink = driver.findElement(By.linkText("value"));
+action.moveToElement(HoverLink);
+action.perform();
+
 
 
 
@@ -624,7 +819,7 @@ driver.manage().timeouts().implicitlyWait(3,TimeUnit.MINUTES);
 driver.findElement(By.xpath("//a[@name='client-drivers']/table/tbody/tr[1]/td[4]/a")).click();
 ```
 
-##Alert Screen
+## Handle Alerts 
 
 ```java
 
@@ -645,6 +840,17 @@ alert.accept();
 
 //Reject the Alert
 alert.dismiss();
+
+//authenticateUsing
+UserAndPassword user = new UserAndPassword("USERNAME", "PASSWORD");
+alert.authenticateUsing(user);
+
+WebDriverWait wait = new WebDriverWait(driver, 10);
+Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+alert.authenticateUsing(new UserAndPassword("USERNAME", "PASSWORD"));
+Actions action = new Actions(driver);
+
+
 
 ```
 
@@ -680,6 +886,41 @@ driver.switchTo().frame("ParentFrame").switchTo().frame("ChildFrame");
 ## Window Handle
 
 ```java
+
+//maximize
+driver.manage().window().maximize();
+
+//getSize
+driver.manage().window().getSize();
+
+//getPosition
+System.out.println(driver.manage().window().getPosition());
+System.out.println("Position X: " + driver.manage().window().getPosition().x);
+System.out.println("Position Y: " + driver.manage().window().getPosition().y);
+System.out.println("Position X: " + driver.manage().window().getPosition().getX());
+System.out.println("Position Y: " + driver.manage().window().getPosition().getY());
+
+//setSize
+Dimension d = new Dimension(320, 480);
+driver.manage().window().setSize(d);
+driver.manage().window().setSize(new Dimension(320, 480));
+
+//setPosition
+Point p = new Point(200, 200);
+driver.manage().window().setPosition(p);
+driver.manage().window().setPosition(new Point(300, 150));
+
+//getWindowHandle
+String parentwindow = driver.getWindowHandle();
+driver.switchTo().window(parentwindow);
+
+//getWindowHandles
+Set<String> childwindows = driver.getWindowHandles();
+driver.SwitchTo().Window(childwindow);
+driver.close();
+driver.SwitchTo().Window(parentWindow);
+
+
 
 //Return a string of alphanumeric window handle
 String  handle= driver.getWindowHandle();
@@ -1068,6 +1309,73 @@ if ( !driver.findElement(By.id("idOfTheElement")).isSelected() )
 {
      driver.findElement(By.id("idOfTheElement")).click();
 }
+
+
+```
+
+## Select
+```java
+//selectByIndex
+driver.get("http://www.barnesandnoble.com/");
+Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
+select.selectByIndex(1);
+select.selectByIndex(2);
+
+//selectByValue
+driver.get("http://www.barnesandnoble.com/");
+Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
+select.selectByValue("music");
+
+//getFirstSelectedOption
+driver.get("http://www.barnesandnoble.com/");
+Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
+select.selectByIndex(6);
+WebElement FSO = select.getFirstSelectedOption();
+System.out.println(select.getFirstSelectedOption().getText());
+
+//selectByVisibleText
+driver.get("http://www.barnesandnoble.com/");
+Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
+select.selectByVisibleText("Music");
+
+//getAllSelectedOptions
+driver.get("http://www.barnesandnoble.com/");
+Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
+List<WebElement> selectedOptions = select.getAllSelectedOptions();
+for(WebElement b : selectedOptions) {
+	System.out.println(b.getText());
+}
+
+//getOptions
+driver.get("http://www.barnesandnoble.com/");
+Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
+for (WebElement b : select.getOptions()) {
+	System.out.println(b.getText());
+}
+
+//isMultiple
+driver.get("http://www.barnesandnoble.com/");
+Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
+if(select.isMultiple()){
+	System.out.println("Support multiple select at a time");
+}
+else{
+	System.out.println("Doesn't support multiple select at a time");
+}
+
+//deselectAll
+driver.get("http://compendiumdev.co.uk/selenium/basic_html_form.html");
+Select select = new Select(driver.findElement(By.name("multipleselect[]")));
+select.deselectAll();
+
+//deselectByIndex
+select.deselectByIndex(3);
+
+//deselectByValue
+select.deselectByValue("ms4");
+
+//deselectByVisibleText
+select.deselectByVisibleText("Selection Item 4");
 
 
 ```
