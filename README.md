@@ -1,5 +1,7 @@
 # Selenium Code Snippet
 
+This  repository contains Selenium code snippet I have collected over the perioid from my work. I have created this page as quick reference page for  Selenium automation engineers. 
+
 
 ##Table of Contents
 
