@@ -7,7 +7,7 @@
 - [WebDriver](#setup)
     - [Firefox](#Firefox-WebDriver)
     - [Chrome](#Chrome-WebDriver)
-    
+- [Find Elements](#find-elements)    
 - [License](#license)
 - [Links](#links)
 
