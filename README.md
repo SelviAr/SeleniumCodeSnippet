@@ -4,16 +4,13 @@
 ##Table of Contents
 
 - [Download Driver](#Driver-Download)
-    - [Composer](#composer)
-    - [TYPO3](#typo3)
-    - [Database](#database)
-- [Setup](#setup)
-    - [Upload the page tree file](#upload-the-page-tree-file)
-    - [Go to the import view](#go-to-the-import-view)
-    - [Import the uploaded page tree file](#import-the-uploaded-page-tree-file)
+- [WebDriver](#setup)
+    - [Firefox](#Firefox-WebDriver)
+    - [Chrome](#Chrome-WebDriver)
+    
 - [License](#license)
 - [Links](#links)
-- 
+
 
 
 
