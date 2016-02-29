@@ -10,6 +10,13 @@ This  repository contains Selenium code snippet I have collected over the perioi
 - [WebDriver](#setup)
     - [Firefox](#Firefox-WebDriver)
     - [Chrome](#Chrome-WebDriver)
+    - [Internet Explorer Driver](#internet-explorer-driver)
+    - [Safari Driver](#safari-driver)
+    - [Android Driver](#android-driver)
+    - [iPhone Driver](#iphone-driver)
+    - [HTMLUnit Driver]()
+    - [RemoteWebDriver]
+    - [Headless testing]
 - [Find Elements](#find-elements)    
 - [License](#license)
 - [Links](#links)
@@ -42,14 +49,14 @@ System.setProperty("webdriver.ie.driver", "C:\\Selenium\\IEDriverServer.exe");
 WebDriver driver = new InternetExplorerDriver();
 ```
 
-## Android Driver
-```java
-WebDriver driver = new AndroidDriver()            
-```
-
 ## Safari Driver
 ```java
 WebDriver driver = new SafariDriver();            
+```
+
+## Android Driver
+```java
+WebDriver driver = new AndroidDriver()            
 ```
 
 ## iPhone Driver
@@ -57,12 +64,12 @@ WebDriver driver = new SafariDriver();
 WebDriver driver = new IPhoneDriver();            
 ```
 
-## HTML Unit
+## HTMLUnit Driver
 ```java
 WebDriver driver = new HtmlUnitDriver()           
 ```
 
-## RemoteWebDriver - Selenium Grid
+## RemoteWebDriver
 ```java
 DesiredCapabilities safari = IOSCapabilities.iphone("Safari");
 RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), safari);
@@ -77,10 +84,8 @@ WebElemnt we1 = driver.findElement(By.id("Elementid"))
 //Find element by element name:
 WebElemnt we1 = driver.findElement(By.name("ElementName"))
 
-
 //Find element by tagname:, get all the links
 WebElemnt we1 = driver.findElement(By.tagName("a"))
-
 
 //Find element by class name:
 WebElemnt we1 = driver.findElement(By.className("ElementClassName"))
