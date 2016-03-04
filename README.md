@@ -73,70 +73,6 @@ WebDriver driver = new AndroidDriver()
 WebDriver driver = new IPhoneDriver();            
 ```
 
-## HTMLUnit Driver
-```java
-DesiredCapabilities capabilities = DesiredCapabilities.firefox(); 
-capabilities.setBrowserName("Mozilla/5.0 (X11; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0"); 
-capabilities.setVersion("24.0"); 
-driver = new HtmlUnitDriver(capabilities); 
-```
-
-## RemoteWebDriver
-```java
-DesiredCapabilities safari = IOSCapabilities.iphone("Safari");
-RemoteWebDriver driver = new RemoteWebDriver(new URL("http://localhost:5555/wd/hub"), safari);
-```
-
-## PhantomJS
-```java
-DesiredCapabilities caps = new DesiredCapabilities(); 
-caps.setCapability("takesScreenshot", true); 
-caps.setJavascriptEnabled(true); // not really needed; JS is enabled by default 
-caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_ PROPERTY, "C:/phantomjs.exe"); 
-WebDriver driver = new PhantomJSDriver(caps); 
-```
-
-## SauceLabs
-```java
-DesiredCapabilities capabilities = new DesiredCapabilities(); 
-capabilities.setBrowserName(browser); 
-capabilities.setCapability("version", browserVersion); 
-capabilities.setCapability("platform", Platform.MAC); 
-capabilities.setCapability("name", method.getName()); 
-// Create the connection to SauceLabs to run the tests 
-this.driver = new RemoteWebDriver( 
-new URL("http://" + username + ":" + key + "@ondemand.saucelabs. com:80/wd/hub"), capabilities); 
-```
-
-## SauceLabs
-```java
-public static final String USERNAME = "yourusername"; 
-public static final String ACCESS_KEY = "youraccesskey"; 
-public static final String URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@hub.browserstack.com/wd/hub"; 
-DesiredCapabilities caps = new DesiredCapabilities(); 
-caps.setCapability("browser", "Firefox"); 
-caps.setCapability("browser_version", "23.0"); 
-caps.setCapability("os", "Windows");
-caps.setCapability("os_version", "XP"); 
-caps.setCapability("browserstack.debug", "true"); 
-//This enable Visual Logs 
-driver = new RemoteWebDriver(new URL(URL), caps); 
-
-```
-
-
-## SauceLabs
-```java
-DesiredCapabilitiescapabillities = DesiredCapabilities.firefox(); 
-capabillities.setCapability("version", "24"); 
-capabillities.setCapability("platform", Platform.WINDOWS); 
-capabillities.setCapability("name", "testOnCloud"); 
-capabillities.setCapability("screenshot", true); capabillities.setCapability("screenrecorder", true); 
-driver = new RemoteWebDriver( 
-new URL ("http://ClientKey:ClientSecret@hub.testingbot.com:4444/wd/hub"), 
-capabillities); 
-```
-
 
 ## Simple Testcase
 ```java
@@ -570,7 +506,7 @@ driver.navigate().forward();
 
 ```
 
-## Navigation
+## Cookies
 ```java
 
 //getCookies
@@ -605,78 +541,13 @@ driver.manage().deleteCookieNamed("lastloggin");
 
 ```java
 WebDriverWait wait = new WebDriverWait(driver, 30);
-WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("id123")));
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("element_id123")));
 
-//presenceOfElementLocated - Verify presence of element in the DOM.
-WebDriverWait wait = new WebDriverWait(driver, 1000);
-wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText("QAmail"))); 
+//Sleep Command
+thread.sleep(1000)
 
-//Using elementToBeClickable
-wait.until(ExpectedConditions.elementToBeClickable(By.linkText("TGmail")));
-
-//c. Using invisibilityOfElementLocated
-wait.until(ExpectedConditions.invisibilityOfElementLocated(By.linkText("tGmail")));
-
-//invisibilityOfElementWithText - Validating the invisibility of element with text for the element provided.
-wait.until(ExpectedConditions.invisibilityOfElementWithText(By.xpath("//div[@id='_eE']"), "tGmail")); 
-
-//textToBePresentInElement - Validating the text to be present in the element defined by locator.
-wait.until(ExpectedConditions.textToBePresentInElement(By.xpath("//div[@id='_eE']"),"Gmail")); 
-
-//visibilityOfElementLocated by locator.
-wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='_eE']"))); 
-
-//titleContains - Wait until the title is displayed correctly
-wait.until(ExpectedConditions.titleContains("QA Automation QTP"));
-
-// alertIsPresent - waits for alert to appear in the window.
-wait.until(ExpectedConditions.alertIsPresent());
-
-
-driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS); 
-
-
-//How to wait till element visible or appear or present on page 
-WebDriverWait wait = new WebDriverWait(driver, 15); 
-wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='text3']")));
-
-
-
-//How to apply wait in webdriver till element becomes invisible or hidden 
-WebDriverWait wait = new WebDriverWait(driver, 15); 
-wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//input[@id='text4']"))); 
-
-
-//Selenium WebDriver wait for title with example
-WebDriverWait wait = new WebDriverWait(driver, 15); 
-wait.until(ExpectedConditions.titleContains(": MyTest"));
-
-//how to wait for alert in selenium
-WebDriverWait wait = new WebDriverWait(driver, 15); 
-wait.until(ExpectedConditions.alertIsPresent());
-
-
-//wait for text to be present with example using explicit wait 
-WebDriverWait wait = new WebDriverWait(driver, 15); 
-wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[@id='timeLeft']"), "Time left: 7 seconds")); 
-
-
-//How to wait for element to be clickable in selenium webdriver using explicit wait
-WebDriverWait wait = new WebDriverWait(driver, 15); 
-wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#submitButton"))); 
-
-```
-
-## Timeouts
-```java
 //implicitlyWait
-driver.manage().timeouts().implicitlyWait(30, TimeUnit.DAYS); 
-driver.manage().timeouts().implicitlyWait(30, TimeUnit.HOURS); 
-driver.manage().timeouts().implicitlyWait(30, TimeUnit. MICROSECONDS); 
-driver.manage().timeouts().implicitlyWait(30, TimeUnit. MILLISECONDS); 
-driver.manage().timeouts().implicitlyWait(30, TimeUnit.MINUTES); 
-driver.manage().timeouts().implicitlyWait(30, TimeUnit. NANOSECONDS); 
-driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
 //pageLoadTimeout
 driver.manage().timeouts().pageLoadTimeout(3, TimeUnit.SECONDS); 
@@ -708,108 +579,11 @@ action.movetoElement("webelement")
 .build()
 .perform()
 
+```
 
+##Mouse Interaction
+```java
 
-//build
-Actions action = new Actions(driver);
-action.click(driver.findElement(By.locatorType("path")));
-action.build();
-
-//click
-action.click(); 
-action.click(driver.findElement(By.locatorType("path")));
-
-//perform
-driver.get("http://www.google.com");
-Actions action = new Actions(driver);
-action.click().build().perform();
-or
-action.click(driver.findElement(By.id("gsri_ok0"))).build().perform();
-
-//doubleClick
-action.doubleClick(ele).build().perform();
-
-// contextClick
-driver.get("http://docs.seleniumhq.org"); 
-Actions action = new Actions(driver); 
-WebElement ele = driver.findElement(By.xpath("//div[@ id='mainContent']/p[1]/i")); 
-action.moveToElement(ele).contextClick().build().perform(); 
-
-
-//clickAndHold
-action.clickAndHold().build().perform();
-action.clickAndHold(driver.findElement(By.locatorType("path"))).build().perform();
-
-//moveToElement
-Actions action = new Actions(driver);
-WebElement source = driver.findElement(By.locatorType("path"));
-action.moveToElement(source).build().perform();
-action.moveToElement(source, 234, 345).build().perform();
-
-//moveByOffset
-Actions action = new Actions(driver);
-action.moveByOffset(234, 345).build().perform();
-
-//dragAndDrop
-Actions action = new Actions(driver); 
-WebElement source = driver.findElement(By.locatorType("path")); 
-WebElement target = driver.findElement(By.locatorType("path")); 
-action.dragAndDrop(source, target).build().perform(); 
-
-//dragAndDropBy
-Actions action = new Actions(driver); 
-WebElement source = driver.findElement(By.locatorType("path")); 
-action.dragAndDropBy(source, 456, 234).build().perform(); 
-
-
-//keyDown
-Actions action = new Actions(driver);
-WebElement source = driver.findElement(By.locatorType("path"));
-WebElement target = driver.findElement(By.locatorType("path"));
-action.keyDown(Keys.CONTROL);
-action.click(source);
-action.click(target);
-action.keyUp(Keys.CONTROL);
-action.perform();
-
-
-//keyUp
-Actions action = new Actions(driver);
-action.keyDown(Keys.CONTROL).sendKeys(Keys.END).keyUp(Keys.CONTROL).build().perform();
-
-
-//Drag and Drop
-WebElement source = driver.findElement(By.locatorType("path"));
-WebElement target = driver.findElement(By.locatorType("path"));
-Actions action = new Actions(driver);
-Action dragAndDrop = action.clickAndHold(source)
-.moveToElement(target)
-.release(target Element)
-.build();
-dragAndDrop.perform();
-
-public void dragAndDrop() throws AWTException, InterruptedException {
-	driver.get("http://demo.kaazing.com/forex/");
-	Actions action = new Actions(driver);
-	WebElement sourceElement = driver.findElement(By.	xpath("(//li[@name='dragSource'])[13]"));
-	Action drag = action.clickAndHold(sourceElement).build();
-	drag.perform();
-	WebElement targetElement = driver.findElement(By.	xpath("//section[@id='section1']/div[2]"));
-	Point coordinates = targetElement.getLocation();
-	Robot robot = new Robot(); //Robot for controlling mouse	actions
-	robot.mouseMove(coordinates.getX(), coordinates.getY() + 120);
-	Thread.sleep(2000);
-	robot.mouseMove(coordinates.getX(), coordinates.getY() + 	110);
-	Thread.sleep(5000);
-}
-
-//dragAndDropBy
-Actions action = new Actions(driver);
-WebElement source = driver.findElement(By.locatorType("path"));
-action.dragAndDropBy(source, 456, 234).build().perform();
-
-
-//release
 WebElement source = driver.findElement(By.locatorType("path"));
 WebElement target = driver.findElement(By.locatorType("path"));
 Action dragAndDrop = action.clickAndHold(source)
@@ -818,97 +592,47 @@ Action dragAndDrop = action.clickAndHold(source)
 .build();
 dragAndDrop.perform();
 
-
-//sendKeys
-Actions action = new Actions(driver);
-WebElement target = driver.findElement(By.locatorType("path"));
-action.sendKeys(Keys.TAB).build().perform();
-action.sendKeys(Keys.CONTROL, Keys.END).build().perform();
-action.sendKeys(target, Keys.TAB).build().perform();
-
-//Zoom In:
-WebElement html = driver.findElement(By.tagName("html")); // WINDOWS
-html.sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD)); // MAC
-html.sendKeys(Keys.chord(Keys.COMMAND, Keys.ADD));
-
-//Zoom Out
-WebElement html = driver.findElement(By.tagName("html")); // WINDOWS
-html.sendKeys(Keys.chord(Keys.CONTROL, Keys.SUBTRACT)); // MAC
-html.sendKeys(Keys.chord(Keys.COMMAND, Keys.SUBTRACT));
-
-//Zoom 100%:
-WebElement html = driver.findElement(By.tagName("html")); // WINDOWS
-html.sendKeys(Keys.chord(Keys.CONTROL, "0")); // MAC
-html.sendKeys(Keys.chord(Keys.COMMAND, Keys."0"));
-
-//Enter:
-driver.findElement(By.locatorType("path")).sendKeys(Keys.RETURN);
-driver.findElement(By.locatorType("path")).sendKeys(Keys.ENTER);
-
-//Mouse Hover
-Actions action = new Actions(driver);
-WebElement HoverLink = driver.findElement(By.linkText("value"));
-action.moveToElement(HoverLink);
-action.perform();
-
-
-
-
-```
-
-##Mouse Interaction
-```java
-
 ```
 
 ##Take A Screenshot On The Page
 ```java
 File snapshot =((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+snapshot.SaveAsFile(filename, ImageFormat.Png);
 ```
 
-##Execute A JavaScript
+## Execute A JavaScript
 ```java
 JavascriptExecutor js = (JavascriptExecutor) driver;
 String js = "document.getElementsByName('fillname')[0].value='Selvi'";
 js.executeScript(js);
 
-
-private static void addJQuery (JavascriptExecutor js) {
-
-    String script = "";
-
-    boolean needInjection = (Boolean)(js.executeScript("return this.$ === undefined;"));
-    if(needInjection) {
-        URL u = Resources.getResource("jquery.js");
-        try {
-            script = Resources.toString(u, Charsets.UTF_8);
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-        js.executeScript(script);
-    }
-}
-
-
-
-WebElement element = (WebElement) js.executeScript("return jQuery.find('#hplogo');");
-
-
-
 ```
 
-Upload A File 
+## Upload A File 
 ```java
-this.driver.Navigate().GoToUrl(
-        @"https://demos.telerik.com/aspnet-ajax/ajaxpanel/application-scenarios/file-upload/defaultcs.aspx");
+
+this.driver.get("https://demos.telerik.com/aspnet-ajax/ajaxpanel/application-scenarios/file-upload/defaultcs.aspx");
 WebElement element = driver.FindElement(By.Id("ctl00_ContentPlaceholder1_RadUpload1file0"));
-String filePath = @"D:\Projects\PatternsInAutomation.Tests\WebDriver.Series.Tests\bin\Debug\WebDriver.xml";
+String filePath = @"C:\MyProject\TestData.csv";
 element.SendKeys(filePath);
+
+-- File Upload Using FirefoxProfile
+FirefoxProfile Prof = new FirefoxProfile();
+Prof.setPreference("browser.download.dir", "D:\\java prj");
+Prof.setPreference("browser.download.folderList", 2);
+Prof.setPreference("browser.helperApps.neverAsk.saveToDisk","application/zip");
+  
+WebDriver driver = new FirefoxDriver(Prof);
+driver.get("http://seleniumhq.org/download/");
+driver.manage().timeouts().implicitlyWait(3,TimeUnit.MINUTES);
+driver.findElement(By.xpath("//a[@name='client-drivers']/table/tbody/tr[1]/td[4]/a")).click();
+
 ```
 
 
-##Scroll Up, Down Or Anywhere On A Page
+## Scroll Up, Down Or Anywhere On A Page
 ```java
+
 JavascriptExecutor jsx = (JavascriptExecutor) driver;
 //Vertical scroll - down by 100 pixels
 jsx.executeScript("window.scrollBy(0,100)", "");
@@ -920,16 +644,10 @@ jsx.executeScript("window.scrollBy(20,0)", "");
 jsx.executeScript("window.scrollBy(-95,0)", "");
 
 
-//Drag and Drop
-this.driver.Navigate().GoToUrl(@"http://loopj.com/jquery-simple-slider/");
-WebElement element = driver.FindElement(By.XPath("//*[@id='project']/p[1]/div/div[2]"));
-Actions move = new Actions(driver);
-move.DragAndDropToOffset(element, 30, 0).Perform();
-
 ```
 
 
-
+## Setting proxy in Firefox
 
 ```java
 import org.openqa.Selenium.Proxy
@@ -945,21 +663,6 @@ FirefoxDriver driver = new FirefoxDriver(profile);
 ```
 
 
-
-
-20. File Download
-
-```java
-FirefoxProfile Prof = new FirefoxProfile();
-Prof.setPreference("browser.download.dir", "D:\\java prj");
-Prof.setPreference("browser.download.folderList", 2);
-Prof.setPreference("browser.helperApps.neverAsk.saveToDisk","application/zip");
-  
-WebDriver driver = new FirefoxDriver(Prof);
-driver.get("http://seleniumhq.org/download/");
-driver.manage().timeouts().implicitlyWait(3,TimeUnit.MINUTES);
-driver.findElement(By.xpath("//a[@name='client-drivers']/table/tbody/tr[1]/td[4]/a")).click();
-```
 
 ## Handle Alerts 
 
@@ -982,17 +685,6 @@ alert.accept();
 
 //Reject the Alert
 alert.dismiss();
-
-//authenticateUsing
-UserAndPassword user = new UserAndPassword("USERNAME", "PASSWORD");
-alert.authenticateUsing(user);
-
-WebDriverWait wait = new WebDriverWait(driver, 10);
-Alert alert = wait.until(ExpectedConditions.alertIsPresent());
-alert.authenticateUsing(new UserAndPassword("USERNAME", "PASSWORD"));
-Actions action = new Actions(driver);
-
-
 
 ```
 
@@ -1062,8 +754,6 @@ driver.SwitchTo().Window(childwindow);
 driver.close();
 driver.SwitchTo().Window(parentWindow);
 
-
-
 //Return a string of alphanumeric window handle
 String  handle= driver.getWindowHandle();
 
@@ -1076,375 +766,35 @@ for (String handle : driver.getWindowHandles()) {
     driver.switchTo().window(handle);}
 }
 
-
-
-
-//patName will provide you parent window
-String patName = itr.next();
-
-//chldName will provide you child window
-String chldName = itr.next();
-
-//Switch to child window
-driver.switchto().window(chldName);
-
-handles.remove(chldName);
-
-//Do normal selenium code for performing action in child window
-
-//To come back to parent window
-driver.switchto().window(patName);
-
-
-
-//To close all the other windows except the main window.
-public static boolean closeAllOtherWindows(String openWindowHandle) {
-	Set<String> allWindowHandles = driver.getWindowHandles();
-	for (String currentWindowHandle : allWindowHandles) {
-		if (!currentWindowHandle.equals(openWindowHandle)) {
-			driver.switchTo().window(currentWindowHandle);
-			driver.close();
-		}
-	}
-	
-	driver.switchTo().window(openWindowHandle);
-	if (driver.getWindowHandles().size() == 1)
-		return true;
-	else
-		return false;
-}
 ```
 
-
-## Window Handle
-
-
-```java
-//Implicitly Wait Command
-driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
-
-//Explicit Wait Command
-WebDriverWait wait = new WebDriverWait(driver, 10);
-WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id(>someid>)));
-
-//PageLoadTimeout Command
-driver.manage().timeouts().pageLoadTimeout(100, SECONDS);
-
-//SetScriptTimeout Command
-driver.manage().timeouts().setScriptTimeout(100,SECONDS);
-
-//Sleep Command
-thread.sleep(1000)
-
-```
-
-
-alertIsPresent() : Is Alert Present?
-elementSelectionStateToBe: Is the element selected?
-elementToBeClickable: Is the element clickable?
-elementToBeSelected: Element is selected
-frameToBeAvailableAndSwitchToIt: Is frame available and selected?
-invisibilityOfElementLocated: Is the element invisible?
-presenceOfAllElementsLocatedBy: All elements presence location.
-refreshed: Wait for a page refresh.
-textToBePresentInElement: Is the text present for a particular element?
-textToBePresentInElementValue: Is the element value present for a particular element?
-visibilityOf: Is the element visible?
-titleContains: Is that title contain?
-
-
-
-//Handle browser based authentication using Selenium Webdriver
-driver.get("http://username:password@selvi.com/");
-
-
-```java
-
-//Switch Between Browser Windows or Tabs
-
- this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com/compelling-sunday-14022016/");
-    driver.FindElement(By.LinkText("10 Advanced WebDriver Tips and Tricks Part 1")).Click();
-    driver.FindElement(By.LinkText("The Ultimate Guide To Unit Testing in ASP.NET MVC")).Click();
-    ReadOnlyCollection<String> windowHandles = driver.WindowHandles;
-    String firstTab = windowHandles.First();
-    String lastTab = windowHandles.Last();
-    driver.SwitchTo().Window(lastTab);
-    Assert.AreEqual<string>("The Ultimate Guide To Unit Testing in ASP.NET MVC", driver.Title);
-    driver.SwitchTo().Window(firstTab);
-    Assert.AreEqual<string>("Compelling Sunday – 19 Posts on Programming and Quality Assurance", driver.Title);
-
-
-//Navigation History
-this.driver.Navigate().GoToUrl(
-        @"http://www.codeproject.com/Articles/1078541/Advanced-WebDriver-Tips-and-Tricks-Part");
-    this.driver.Navigate().GoToUrl(
-        @"http://www.codeproject.com/Articles/1017816/Speed-up-Selenium-Tests-through-RAM-Facts-and-Myth");
-    driver.Navigate().Back();
-    Assert.AreEqual<string>(
-        "10 Advanced WebDriver Tips and Tricks - Part 1 - CodeProject", 
-        driver.Title);
-    driver.Navigate().Refresh();
-    Assert.AreEqual<string>(
-        "10 Advanced WebDriver Tips and Tricks - Part 1 - CodeProject", 
-        driver.Title);
-    driver.Navigate().Forward();
-    Assert.AreEqual<string>(
-        "Speed up Selenium Tests through RAM Facts and Myths - CodeProject", 
-        driver.Title);
-
-
-//Change User Agent
-
-FirefoxProfileManager profileManager = new FirefoxProfileManager();
-FirefoxProfile profile = new FirefoxProfile();
-profile.SetPreference(
-"general.useragent.override",
-"Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+");
-this.driver = new FirefoxDriver(profile);
-
-
-
-
-//Set HTTP Proxy for Browser
-
-FirefoxProfile firefoxProfile = new FirefoxProfile();
-firefoxProfile.SetPreference("network.proxy.type", 1);
-firefoxProfile.SetPreference("network.proxy.http", "myproxy.com");
-firefoxProfile.SetPreference("network.proxy.http_port", 3239);
-driver = new FirefoxDriver(firefoxProfile);
-
-
-Handle SSL Certificate Error
-
-//Handle SSL Certificate Error FirefoxDriver
-FirefoxProfile firefoxProfile = new FirefoxProfile();
-firefoxProfile.AcceptUntrustedCertificates = true;
-firefoxProfile.AssumeUntrustedCertificateIssuer = false;
-driver = new FirefoxDriver(firefoxProfile);
-
-
-//Handle SSL Certificate Error ChromeDriver
-DesiredCapabilities capability = DesiredCapabilities.Chrome();
-Environment.SetEnvironmentVariable("webdriver.chrome.driver", "C:\\Path\\To\\ChromeDriver.exe");
-capability.SetCapability(CapabilityType.AcceptSslCertificates, true);
-driver = new RemoteWebDriver(capability);
-
-
-//Handle SSL Certificate Error InternetExplorerDriver
-
-DesiredCapabilities capability = DesiredCapabilities.InternetExplorer();
-Environment.SetEnvironmentVariable("webdriver.ie.driver", "C:\\Path\\To\\IEDriver.exe");
-capability.SetCapability(CapabilityType.AcceptSslCertificates, true);
-driver = new RemoteWebDriver(capability);
-
-
-
-//Scroll Focus to Control
-this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com/compelling-sunday-14022016/");
-    IWebElement link = driver.FindElement(By.PartialLinkText("Previous post"));
-    string jsToBeExecuted = string.Format("window.scroll(0, {0});", link.Location.Y);
-    ((IJavaScriptExecutor)driver).ExecuteScript(jsToBeExecuted);
-    link.Click();
-    Assert.AreEqual<string>("10 Advanced WebDriver Tips and Tricks - Part 1", driver.Title);
-
-
-//Focus on a Control
-
-this.driver.Navigate().GoToUrl(
-    @"http://automatetheplanet.com/compelling-sunday-14022016/");
-    IWebElement link = driver.FindElement(By.PartialLinkText("Previous post"));
-
-    //Option 1.
-    link.SendKeys(string.Empty);
-
-    //Option 2.
-    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].focus();", link);
-
-
-
-
-1. Taking a Screenshot
-public void TakeFullScreenshot(IWebDriver driver, String filename)
-{
-    Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-    screenshot.SaveAsFile(filename, ImageFormat.Png);
-}
-
-
-public void TakeScreenshotOfElement(IWebDriver driver, By by, string fileName)
-{
-    // 1. Make screenshot of all screen
-    var screenshotDriver = driver as ITakesScreenshot;
-    Screenshot screenshot = screenshotDriver.GetScreenshot();
-    var bmpScreen = new Bitmap(new MemoryStream(screenshot.AsByteArray));
-
-    // 2. Get screenshot of specific element
-    IWebElement element = driver.FindElement(by);
-    var cropArea = new Rectangle(element.Location, element.Size);
-    var bitmap = bmpScreen.Clone(cropArea, bmpScreen.PixelFormat);
-    bitmap.Save(fileName);
-}
-
-
-[TestMethod]
-public void WebDriverAdvancedUsage_TakingFullScrenenScreenshot()
-{
-    this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
-    this.WaitUntilLoaded();
-    string tempFilePath = Path.GetTempFileName().Replace(".tmp", ".png");
-    this.TakeFullScreenshot(this.driver, tempFilePath);
-}
-
-[TestMethod]
-public void WebDriverAdvancedUsage_TakingElementScreenshot()
-{
-    this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
-    this.WaitUntilLoaded();
-    string tempFilePath = Path.GetTempFileName().Replace(".tmp", ".png");
-    this.TakeScreenshotOfElement(this.driver, 
-    By.XPath("//*[@id='tve_editor']/div[2]/div[2]/div/div"), tempFilePath);
-}
-
-
-
-//Execute JavaScript
- this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
-    this.WaitUntilLoaded();
-    IJavaScriptExecutor js = driver as IJavaScriptExecutor;
-    string title = (string)js.ExecuteScript("return document.title");
-    Debug.WriteLine(title);
-
-
-
-//Set Page Load Timeout
-this.driver.Manage().Timeouts().SetPageLoadTimeout(new TimeSpan(0, 0, 10));
-
-
-private void WaitUntilLoaded()
-{
-    WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-    wait.Until((x) =>
-    {
-        return ((IJavaScriptExecutor)this.driver)
-        .ExecuteScript("return document.readyState").Equals("complete");
-    });
-}
-
-
-
-WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(
-  By.XPath("//*[@id='tve_editor']/div[2]/div[2]/div/div")));
-
-
-
-Execute Tests in a Headless Browser
-
-
-this.driver = new PhantomJSDriver(
-        @"D:\Projects\PatternsInAutomation.Tests\WebDriver.Series.Tests\Drivers");
-    this.driver.Navigate().GoToUrl(@"http://automatetheplanet.com");
-    this.WaitUntilLoaded();
-    IJavaScriptExecutor js = driver as IJavaScriptExecutor;
-    string title = (string)js.ExecuteScript("return document.title");
-    Debug.WriteLine(title);
-
-
-
-Check If an Element Is Visible
-Assert.IsTrue(driver.FindElement(
-        By.XPath("//*[@id='tve_editor']/div[2]/div[2]/div/div")).Displayed);
-
-
-
-Use Specific Profile
-FirefoxProfileManager profileManager = new FirefoxProfileManager();
-FirefoxProfile profile = profileManager.GetProfile("YourProfileName");
-this.driver = new FirefoxDriver(profile);
-
-
-
-ChromeOptions options = new ChromeOptions();
-// set some options
-DesiredCapabilities dc = DesiredCapabilities.Chrome();
-dc.SetCapability(ChromeOptions.Capability, options);
-IWebDriver driver = new RemoteWebDriver(dc);
-
-
-
-Turn Off JavaScript
-FirefoxProfileManager profileManager = new FirefoxProfileManager();
-FirefoxProfile profile = profileManager.GetProfile("HARDDISKUSER");
-profile.SetPreference("javascript.enabled", false);
-this.driver = new FirefoxDriver(profile);
-
-
-
-Manage Cookies
-
-
-Cookie cookie = new Cookie("key", "value");
-this.driver.Manage().Cookies.AddCookie(cookie);
-
-
-
-Get All Cookies
-var cookies = this.driver.Manage().Cookies.AllCookies;
-foreach (var currentCookie in cookies)
-{
-    Debug.WriteLine(currentCookie.Value);
-}
-
-
-Delete a Cookie by Name
-this.driver.Manage().Cookies.DeleteCookieNamed("CookieName");
-
-Delete All Cookies
-this.driver.Manage().Cookies.DeleteAllCookies();
-
-Get a Cookie by Name
-var myCookie = this.driver.Manage().Cookies.GetCookieNamed("CookieName");
-Debug.WriteLine(myCookie.Value);
-
-
-Maximize Window
-driver.Manage().Window.Maximize();
-
-```
 
 ## Select
 ```java
-new Select(driver.findElement(By.id("gender"))).selectByVisibleText("Germany");
 
+new Select(driver.findElement(By.id("gender"))).selectByVisibleText("Germany");
 
 Select dropdown = new Select(driver.findElement(By.id("identifier")));
 dropdown.selectByVisibleText("Programmer ");
 dropdown.selectByIndex(1);
 dropdown.selectByValue("prog");
 
-
 WebElement select = driver.findElement(By.id("gender"));
 List<WebElement> options = select.findElements(By.tagName("option"));
 
 
-
 for (WebElement option : options) {
-
 if("Germany".equals(option.getText().trim()))
-
  option.click();   
 }
 
 
-
 List<WebElement> list = sel.getOptions();
  for(int i=0;i<list.size();i++){
-        if(list.get(i).getText().equals(sel.getFirstSelectedOption().getText())){
-            System.out.println("The index of the selected option is: "+i);
-            break;
-            }
-
+if(list.get(i).getText().equals(sel.getFirstSelectedOption().getText())){
+	System.out.println("The index of the selected option is: "+i);
+	break;
+}
 
 //checks whether the check box is selected or not. If it is not selected, then it selects.
 if ( !driver.findElement(By.id("idOfTheElement")).isSelected() )
@@ -1455,248 +805,20 @@ if ( !driver.findElement(By.id("idOfTheElement")).isSelected() )
 
 ```
 
-## Select
-```java
-//selectByIndex
-driver.get("http://www.barnesandnoble.com/");
-Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
-select.selectByIndex(1);
-select.selectByIndex(2);
-
-//selectByValue
-driver.get("http://www.barnesandnoble.com/");
-Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
-select.selectByValue("music");
-
-//getFirstSelectedOption
-driver.get("http://www.barnesandnoble.com/");
-Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
-select.selectByIndex(6);
-WebElement FSO = select.getFirstSelectedOption();
-System.out.println(select.getFirstSelectedOption().getText());
-
-//selectByVisibleText
-driver.get("http://www.barnesandnoble.com/");
-Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
-select.selectByVisibleText("Music");
-
-//getAllSelectedOptions
-driver.get("http://www.barnesandnoble.com/");
-Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
-List<WebElement> selectedOptions = select.getAllSelectedOptions();
-for(WebElement b : selectedOptions) {
-	System.out.println(b.getText());
-}
-
-//getOptions
-driver.get("http://www.barnesandnoble.com/");
-Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
-for (WebElement b : select.getOptions()) {
-	System.out.println(b.getText());
-}
-
-//isMultiple
-driver.get("http://www.barnesandnoble.com/");
-Select select = new Select(driver.findElement(By.id("quick-search-1-category")));
-if(select.isMultiple()){
-	System.out.println("Support multiple select at a time");
-}
-else{
-	System.out.println("Doesn't support multiple select at a time");
-}
-
-//deselectAll
-driver.get("http://compendiumdev.co.uk/selenium/basic_html_form.html");
-Select select = new Select(driver.findElement(By.name("multipleselect[]")));
-select.deselectAll();
-
-//deselectByIndex
-select.deselectByIndex(3);
-
-//deselectByValue
-select.deselectByValue("ms4");
-
-//deselectByVisibleText
-select.deselectByVisibleText("Selection Item 4");
 
 
-```
-
-
-## Select
+## Assert a Button Enabled or Disabled
 ```java
 
 
-
-//Start FirefoxDriver with Plugins
-FirefoxProfile profile = new FirefoxProfile();
-profile.AddExtension(@"C:\extensionsLocation\extension.xpi");
-IWebDriver driver = new FirefoxDriver(profile);
-
-
-
-//Set HTTP Proxy ChromeDriver
-ChromeOptions options = new ChromeOptions();
-var proxy = new Proxy();
-proxy.Kind = ProxyKind.Manual;
-proxy.IsAutoDetect = false;
-proxy.HttpProxy =
-proxy.SslProxy = "127.0.0.1:3239";
-options.Proxy = proxy;
-options.AddArgument("ignore-certificate-errors");
-IWebDriver driver = new ChromeDriver(options);
-
-
-//Set HTTP Proxy with Authentication ChromeDriver
-ChromeOptions options = new ChromeOptions();
-var proxy = new Proxy();
-proxy.Kind = ProxyKind.Manual;
-proxy.IsAutoDetect = false;
-proxy.HttpProxy =
-proxy.SslProxy = "127.0.0.1:3239";
-options.Proxy = proxy;
-options.AddArguments("--proxy-server=http://user:password@127.0.0.1:3239");
-options.AddArgument("ignore-certificate-errors");
-IWebDriver driver = new ChromeDriver(options);
-
-
-Start ChromeDriver with an Unpacked Extension
-ChromeOptions options = new ChromeOptions();
-options.AddArguments("load-extension=/pathTo/extension");
-DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.SetCapability(ChromeOptions.Capability, options);
-DesiredCapabilities dc = DesiredCapabilities.Chrome();
-dc.SetCapability(ChromeOptions.Capability, options);
-IWebDriver driver = new RemoteWebDriver(dc);
-
-
-//Start ChromeDriver with an Packed Extension
-ChromeOptions options = new ChromeOptions();
-options.AddExtension(Path.GetFullPath("local/path/to/extension.crx"));
-DesiredCapabilities capabilities = new DesiredCapabilities();
-capabilities.SetCapability(ChromeOptions.Capability, options);
-DesiredCapabilities dc = DesiredCapabilities.Chrome();
-dc.SetCapability(ChromeOptions.Capability, options);
-IWebDriver driver = new RemoteWebDriver(dc);
-
-
-//Assert a Button Enabled or Disabled
+Check If an Element Is Visible
+Assert.IsTrue(driver.FindElement(By.XPath("//*[@id='tve_editor']/div[2]/div[2]/div/div")).Displayed);
 
 IWebElement button = driver.FindElement(By.XPath("/html/body/button"));
 Assert.IsFalse(button.Enabled);
-
-
-
-//Set and Assert the Value of a Hidden Field
-////<input type="hidden" name="country" value="Bulgaria"/>
-    IWebElement theHiddenElem = driver.FindElement(By.Name("country"));
-    string hiddenFieldValue = theHiddenElem.GetAttribute("value");
-    Assert.AreEqual("Bulgaria", hiddenFieldValue);
-    ((IJavaScriptExecutor)driver).ExecuteScript(
-        "arguments[0].value='Germany';",
-        theHiddenElem);
-    hiddenFieldValue = theHiddenElem.GetAttribute("value");
-    Assert.AreEqual("Germany", hiddenFieldValue);
-
-
-
-//Wait AJAX Call to Complete Using JQuery
-
-public void WaitForAjaxComplete(int maxSeconds)
-{
-    bool isAjaxCallComplete = false;
-    for (int i = 1; i <= maxSeconds; i++)
-    {
-        isAjaxCallComplete = (bool)((IJavaScriptExecutor)driver).
-        ExecuteScript("return window.jQuery != undefined && jQuery.active == 0");
-
-        if (isAjaxCallComplete)
-        {
-            return;
-        }
-        Thread.Sleep(1000);
-    }
-    throw new Exception(string.Format("Timed out after {0} seconds", maxSeconds));
-}
-
-
-
-//Verify File Downloaded ChromeDriver
-[TestMethod]
-public void VerifyFileDownloadChrome()
-{
-    string expectedFilePath = @"c:\temp\Testing_Framework_2015_3_1314_2_Free.exe";
-    try
-    {
-        String downloadFolderPath = @"c:\temp\";
-        var options = new ChromeOptions();
-        options.AddUserProfilePreference("download.default_directory", downloadFolderPath);
-        driver = new ChromeDriver(options);
-
-        driver.Navigate().GoToUrl("https://www.telerik.com/download-trial-file/v2/telerik-testing-framework");
-        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-        wait.Until((x) =>
-        {
-            return File.Exists(expectedFilePath);
-        });
-        FileInfo fileInfo = new FileInfo(expectedFilePath);
-        long fileSize = fileInfo.Length;
-        Assert.AreEqual(4326192, fileSize);
-    }
-    finally
-    {
-        if (File.Exists(expectedFilePath))
-        {
-            File.Delete(expectedFilePath);
-        }
-    }
-}
-
-
-//Verify File Downloaded FirefoxDriver
-public void VerifyFileDownloadFirefox()
-{
-    string expectedFilePath = @"c:\temp\Testing_Framework_2015_3_1314_2_Free.exe";
-    try
-    {
-        String downloadFolderPath = @"c:\temp\";
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.SetPreference("browser.download.folderList", 2);
-        profile.SetPreference("browser.download.dir", downloadFolderPath);
-        profile.SetPreference("browser.download.manager.alertOnEXEOpen", false);
-        profile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/msword, application/binary, application/ris, text/csv, image/png, application/pdf, text/html, text/plain, application/zip, application/x-zip, application/x-zip-compressed, application/download, application/octet-stream");
-        this.driver = new FirefoxDriver(profile);
-
-        driver.Navigate().GoToUrl("https://www.telerik.com/download-trial-file/v2/telerik-testing-framework");
-        WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-        wait.Until((x) =>
-        {
-            return File.Exists(expectedFilePath);
-        });
-        FileInfo fileInfo = new FileInfo(expectedFilePath);
-        long fileSize = fileInfo.Length;
-        Assert.AreEqual(4326192, fileSize);
-    }
-    finally
-    {
-        if (File.Exists(expectedFilePath))
-        {
-            File.Delete(expectedFilePath);
-        }
-    }
-}
 ```
 
 
-## Switching user agents 
-```java
-System.setProperty("webdriver.chrome.driver","C:\\chromedriver.exe"); 
-ChromeOptions options = new ChromeOptions(); 
-options.addArguments("user-data-dir=C:/Users/user_name/AppData/Local/ Google/Chrome/User Data"); 
-options.addArguments("--user-agent=Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3_2 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8H7 Safari/6533.18.5"); //iPhone 4 
-options.addArguments("--start-maximized"); 
-driver = new ChromeDriver(options); 
-```
 
 ## License
 
