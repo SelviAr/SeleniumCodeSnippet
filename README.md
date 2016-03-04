@@ -1705,6 +1705,6 @@ driver = new ChromeDriver(options);
 * [Automate Telerik Kendo Grid Webdriver](http://automatetheplanet.com/automate-telerik-kendo-grid-webdriver/)
 * [Selenium Documentation](http://docs.seleniumhq.org/docs/)
 * [Test Activities](https://rtomac.github.io/robotframework-selenium2library/doc/Selenium2Library.html)
-
+* [Basic of CSS Selector](https://robots.thoughtbot.com/basic-css-selectors-explained-with-cats)
 
 
