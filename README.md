@@ -838,10 +838,7 @@ Assert.IsFalse(button.Enabled);
 * [All Selenium Example](http://www.programcreek.com/java-api-examples/index.php?ClassName=selenium&submit=Search)
 
 * [org.openqa.selenium.firefox.FirefoxDriver](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.firefox.FirefoxDriver)
-
-
 * [org.openqa.selenium.chrome](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.chrome)
-
 * [org.openqa.selenium.WebDriver](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.WebDriver)
 * [org.openqa.selenium.WebElement](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.WebElement)
 * [org.openqa.selenium.By](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.By)
