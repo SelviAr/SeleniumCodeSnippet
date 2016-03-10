@@ -845,21 +845,15 @@ Assert.IsFalse(button.Enabled);
 * [org.openqa.selenium.WebDriver](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.WebDriver)
 * [org.openqa.selenium.WebElement](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.WebElement)
 * [org.openqa.selenium.By](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.By)
-
 * [org.openqa.selenium.support.ui.WebDriverWait](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.support.ui.WebDriverWait)
 * [org.openqa.selenium.support.ui.FluentWait](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.support.ui.FluentWait)
-
-*[org.openqa.selenium.support.ui.ExpectedCondition](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.support.ui.ExpectedCondition)
-
-
+* [org.openqa.selenium.support.ui.ExpectedCondition](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.support.ui.ExpectedCondition)
 * [org.openqa.selenium.NoSuchElementException](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.NoSuchElementException)
 * [org.openqa.selenium.StaleElementReferenceException](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.StaleElementReferenceException)
 * [org.openqa.selenium.TimeoutException](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.TimeoutException)
-
 * [org.openqa.selenium.interactions.Action](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.interactions.Action)
 * [org.openqa.selenium.interactions.Actions](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.interactions.Actions)
 * [org.openqa.selenium.Keys](http://www.programcreek.com/java-api-examples/index.php?api=org.openqa.selenium.Keys)
-
 * [org.testng.annotations.Test](http://www.programcreek.com/java-api-examples/index.php?api=org.testng.annotations.Test)
 
 
