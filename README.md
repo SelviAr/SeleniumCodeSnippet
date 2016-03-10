@@ -14,10 +14,28 @@ This  repository contains Selenium code snippet I have collected over the perioi
     - [Safari Driver](#safari-driver)
     - [Android Driver](#android-driver)
     - [iPhone Driver](#iphone-driver)
-    - [HTMLUnit Driver]()
-    - [RemoteWebDriver]
-    - [Headless testing]
 - [Find Elements](#find-elements)    
+* [Simple Testcase](simple-testcase)
+* [Find Elements](find-elements)
+* [Xpath](xpath)
+* [CSS Selector](cssselector)
+* [Navigation](navigation)
+* [Cookies](cookies)
+* [Waiting](waiting)
+* [Keyboard Interaction](keyboard-interaction)
+* [Mouse Interaction](mouse-interaction)
+* [Take a screenshot](take-a-screenshot-on-the-page)
+* [Execute Javascript](execute-a-javascript)
+* [Upload file](upload-a-file)
+* [Scroll](scroll-up-down-or-anywhere-on-a-page)
+* [Setting Proxy in Firefox](setting-proxy-in-firefox)
+* [Handle Alerts](handle-alerts)
+* [iFrames](iframes)
+* [Window Hhandle](window-handle)
+* [Select](select)
+* [assert-a-button-enabled-or-disabled](assert-a-button-enabled-or-disabled)
+
+
 - [License](#license)
 - [Links](#links)
 
