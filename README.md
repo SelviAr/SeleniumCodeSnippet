@@ -139,6 +139,8 @@ WebElemnt we1 = driver.findElement(By.Xpath(“clic”))
 
 ## Xpath
 
+http://test-able.blogspot.com/2016/04/xpath-selectors-cheat-sheet.html
+
 ```java
 Absolute Path
 //Identifying Xpath using full path of XML
