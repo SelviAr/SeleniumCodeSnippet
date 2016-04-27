@@ -45,10 +45,6 @@ This repository contains Selenium code snippet I have collected over the period 
 ## Driver Download
 
 
-I am **bold**
-
-
-
 ## Firefox Driver
 ```java
 WebDriver driver = new FirefoxDriver();           //Firefox Driver
