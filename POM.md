@@ -4,7 +4,8 @@
 
 
 ## PageObjects
-lass HomePage {
+``` java
+class HomePage {
 
     WebDriver driver;
 
@@ -26,6 +27,7 @@ lass HomePage {
 
    // More actions and elements
 }
+``` 
 
 ## Usage of PageFactory and PageObject
 class TestSomething {
