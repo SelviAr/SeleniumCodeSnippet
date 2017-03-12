@@ -30,6 +30,7 @@ class HomePage {
 ``` 
 
 ## Usage of PageFactory and PageObject
+``` java
 class TestSomething {
 
     public void testMethod() {
@@ -47,7 +48,7 @@ class TestSomething {
     }
 
 }
-
+``` 
 
 
 
