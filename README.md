@@ -14,6 +14,9 @@ Go to Selenium Source [Code page](https://github.com/SelviAr/SeleniumCodeSnippet
 * [Using Robot API with Selenium](http://www.guru99.com/using-robot-api-selenium.html)
 * [Alert & Popup handling in Selenium](http://www.guru99.com/alert-popup-handling-selenium.html)
 
+Selenium Framework Creation and Accessing Test Data from Excel – Selenium Tutorial #21
+http://www.softwaretestinghelp.com/selenium-framework-design-selenium-tutorial-21/
+
 
 Execute your Automation Tests in the Cloud using Selenium
 http://www.seleniumeasy.com/selenium-tutorials/execute-selenium-tests-in-the-Cloud
