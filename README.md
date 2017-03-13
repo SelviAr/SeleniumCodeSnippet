@@ -87,6 +87,9 @@ http://www.seleniumeasy.com/selenium-tutorials/how-to-perform-mouseover-action-i
 
 
 
+http://www.seleniumeasy.com/selenium-webdriver-tutorials
+
+http://toolsqa.com/selenium-tutorial/
 
 
 
