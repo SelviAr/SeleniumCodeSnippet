@@ -64,6 +64,8 @@ http://www.seleniumeasy.com/selenium-tutorials/page-object-model-framework-intro
 File upload using Robots
 http://www.seleniumeasy.com/selenium-tutorials/webdriver-file-upload-using-robots
 
+Data Driven Framework with Apache POI – Exce
+http://toolsqa.com/selenium-webdriver/data-driven-testing-excel-poi/
 
 Read data from Properties file using Java Selenium
 http://www.seleniumeasy.com/selenium-tutorials/read-data-from-properties-file-using-java-selenium
